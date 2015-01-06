@@ -14,6 +14,8 @@
 		57CC69E81A5BE1C400C427B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57CC69E71A5BE1C400C427B1 /* Images.xcassets */; };
 		57CC69EB1A5BE1C500C427B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CC69E91A5BE1C500C427B1 /* Main.storyboard */; };
 		57CC69F71A5BE1C500C427B1 /* Network_MonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69F61A5BE1C500C427B1 /* Network_MonitorTests.m */; };
+		57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */; };
+		57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A041A5BE3A900C427B1 /* HostList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		57CC69F01A5BE1C500C427B1 /* Network MonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Network MonitorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69F51A5BE1C500C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CC69F61A5BE1C500C427B1 /* Network_MonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Network_MonitorTests.m; sourceTree = "<group>"; };
+		57CC6A001A5BE28F00C427B1 /* AddHostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHostViewController.h; sourceTree = "<group>"; };
+		57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHostViewController.m; sourceTree = "<group>"; };
+		57CC6A031A5BE3A900C427B1 /* HostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostList.h; path = CoreData/HostList.h; sourceTree = "<group>"; };
+		57CC6A041A5BE3A900C427B1 /* HostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostList.m; path = CoreData/HostList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +93,10 @@
 				57CC69E21A5BE1C400C427B1 /* ViewController.m */,
 				57CC69E71A5BE1C400C427B1 /* Images.xcassets */,
 				57CC69E91A5BE1C500C427B1 /* Main.storyboard */,
+				57CC6A001A5BE28F00C427B1 /* AddHostViewController.h */,
+				57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */,
 				57CC69E41A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld */,
+				57CC6A061A5BE3AC00C427B1 /* CoreData */,
 				57CC69DA1A5BE1C400C427B1 /* Supporting Files */,
 			);
 			path = "Network Monitor";
@@ -117,6 +126,15 @@
 				57CC69F51A5BE1C500C427B1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57CC6A061A5BE3AC00C427B1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				57CC6A041A5BE3A900C427B1 /* HostList.m */,
+				57CC6A031A5BE3A900C427B1 /* HostList.h */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +239,8 @@
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
+				57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */,
+				57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
