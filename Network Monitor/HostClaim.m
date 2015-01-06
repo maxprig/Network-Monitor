@@ -21,13 +21,15 @@
 @synthesize onlineHost;
 
 NSString *hostAddress = nil;
+NSNumber *hostPort = nil;
 
 //Инициализатор
-- (id)initWithAddress:(NSString *)address
+- (id)initWithAddress:(NSString *)address port:(NSNumber *)port
 {
     self = [super init];
     if (self) {
         hostAddress = address;
+        hostPort = port;
     }
     return self;
 }
@@ -52,7 +54,7 @@ NSString *hostAddress = nil;
     }
     
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(4899); // мы работаем на этом порту
+    addr.sin_port = htons([hostPort intValue]); // мы работаем на этом порту
     addr.sin_addr.s_addr = inet_addr([[NSString stringWithFormat:@"%@", hostAddress]UTF8String]);
     tv.tv_sec = 5.0;
     
