@@ -112,8 +112,8 @@
 				57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */,
 				57CC69E71A5BE1C400C427B1 /* Images.xcassets */,
 				57CC69E91A5BE1C500C427B1 /* Main.storyboard */,
-				57CAC51E1A5C0F5900019DBC /* ConnectionObjects */,
 				57CC69E41A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld */,
+				57CAC51E1A5C0F5900019DBC /* ConnectionObjects */,
 				57CC6A061A5BE3AC00C427B1 /* CoreData */,
 				57CC69DA1A5BE1C400C427B1 /* Supporting Files */,
 			);
