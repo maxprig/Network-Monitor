@@ -60,25 +60,26 @@
       NSArray *hst = [self dataFromCoreData];
       for (HostList *address in hst) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n Проверка соединения с %@", self.consoleTextField.string, [address valueForKey:@"address"]];
+            self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n Попытка соединения с %@ на порт №%@", self.consoleTextField.string, [address valueForKey:@"address"], [address valueForKey:@"port"]];
         });
         
-        HostObject *tmpObject = [[HostObject alloc]initWithAddress:[address valueForKey:@"address"]];
+        HostObject *tmpObject = [[HostObject alloc]initWithAddress:[address valueForKey:@"address"] port:[address valueForKey:@"port"]];
         [tmpObject doConnection];
         
         if ([tmpObject hostStatus] && scan) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *msg = [NSString stringWithFormat:@"Хост %@ доступен", [address valueForKey:@"address"]];
+            NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ доступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
             self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
             });
             }
         else
         {
             dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *msg = [NSString stringWithFormat:@"Хост %@ недоступен", [address valueForKey:@"address"]];
+            NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ недоступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
             self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
             });
             }
+          sleep(2); //Ожидаение две секунды.
       }
     });
     }
