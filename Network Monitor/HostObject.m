@@ -21,13 +21,13 @@
 HostClaim *claimToHost = nil;
 
 #pragma mark -Инициализатор-
-- (id)initWithAddress:(NSString *)address
+- (id)initWithAddress:(NSString *)address port:(NSNumber*)port
 {
     self = [super init];
     if (self) {
         hostAddress = address;
         hostStatus = false;
-        claimToHost = [[HostClaim alloc]initWithAddress:address];
+        claimToHost = [[HostClaim alloc]initWithAddress:address port:port];
     }
     return self;
 }

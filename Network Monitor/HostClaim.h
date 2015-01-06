@@ -14,7 +14,7 @@
 @property (assign) BOOL onlineHost;
 
 //Инициализатор
-- (id)initWithAddress:(NSString *)address port:(NSNumber)port;
+- (id)initWithAddress:(NSString *)address port:(NSNumber*)port;
 
 //Сканер
 -(int)claimHostToAddress;

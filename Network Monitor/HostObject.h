@@ -25,7 +25,7 @@
 //Время потери соединения
 @property (assign) NSString *lostConnectionWithHostTime;
 
--(id)initWithAddress:(NSString *)address;
+-(id)initWithAddress:(NSString *)address port:(NSNumber*)port;
 
 -(void)doConnection;
 
