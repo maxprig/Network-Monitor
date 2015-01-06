@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HostList.h"
 
 @interface AppDelegate ()
 
@@ -108,6 +109,20 @@
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
 
     return _managedObjectContext;
+}
+
+//Кнопка очистки базы данных.
+- (IBAction)clearDataBase:(NSMenuItem *)sender {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"HostList" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *array = [context executeFetchRequest:fetchRequest error:nil];
+    if ([array count]!=0) {
+        for (NSManagedObject *object in array) {
+            [context deleteObject:object];
+        }
+    }
 }
 
 #pragma mark - Core Data Saving and Undo support

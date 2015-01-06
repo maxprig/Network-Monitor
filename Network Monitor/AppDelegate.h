@@ -14,6 +14,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (IBAction)clearDataBase:(NSMenuItem *)sender;
 
 @end
 
