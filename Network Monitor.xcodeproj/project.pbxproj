@@ -16,6 +16,7 @@
 		57CC69F71A5BE1C500C427B1 /* Network_MonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69F61A5BE1C500C427B1 /* Network_MonitorTests.m */; };
 		57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */; };
 		57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A041A5BE3A900C427B1 /* HostList.m */; };
+		57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A081A5BE64500C427B1 /* HostClaim.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHostViewController.m; sourceTree = "<group>"; };
 		57CC6A031A5BE3A900C427B1 /* HostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostList.h; path = CoreData/HostList.h; sourceTree = "<group>"; };
 		57CC6A041A5BE3A900C427B1 /* HostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostList.m; path = CoreData/HostList.m; sourceTree = "<group>"; };
+		57CC6A071A5BE64500C427B1 /* HostClaim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostClaim.h; sourceTree = "<group>"; };
+		57CC6A081A5BE64500C427B1 /* HostClaim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostClaim.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				57CC69E91A5BE1C500C427B1 /* Main.storyboard */,
 				57CC6A001A5BE28F00C427B1 /* AddHostViewController.h */,
 				57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */,
+				57CC6A071A5BE64500C427B1 /* HostClaim.h */,
+				57CC6A081A5BE64500C427B1 /* HostClaim.m */,
 				57CC69E41A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld */,
 				57CC6A061A5BE3AC00C427B1 /* CoreData */,
 				57CC69DA1A5BE1C400C427B1 /* Supporting Files */,
@@ -240,6 +245,7 @@
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
 				57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */,
+				57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */,
 				57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
 			);
