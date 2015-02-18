@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570507321A95142000CB4E18 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507311A95142000CB4E18 /* Group.m */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
 		57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69E21A5BE1C400C427B1 /* ViewController.m */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570507301A95142000CB4E18 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = CoreData/Group.h; sourceTree = "<group>"; };
+		570507311A95142000CB4E18 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CC69DC1A5BE1C400C427B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 		57CC6A061A5BE3AC00C427B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				570507301A95142000CB4E18 /* Group.h */,
+				570507311A95142000CB4E18 /* Group.m */,
 				57CC6A041A5BE3A900C427B1 /* HostList.m */,
 				57CC6A031A5BE3A900C427B1 /* HostList.h */,
 			);
@@ -254,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570507321A95142000CB4E18 /* Group.m in Sources */,
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
