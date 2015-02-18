@@ -7,6 +7,7 @@
 //
 
 #import "AddGroupViewController.h"
+#import "Group.h"
 
 @interface AddGroupViewController ()
 
@@ -19,19 +20,44 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//Кнопка
+- (IBAction)saveButton:(NSButton *)sender {
+    NSArray *array = [self dataFromCoreData]; //Будем смотреть колличество групп
+    
+    NSManagedObjectContext *context = [self takeContext];
+    Group *new = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:context];
+    if (new) {
+        new.name = _insertGroupName.stringValue;
+        new.groupID = [NSNumber numberWithInteger:[array count]+1];
+    }
+    
+    NSError *saveError = nil;
+    
+    if (![context save:&saveError]) {
+        NSLog(@"Ошибка записи в базу.");
+    }
+    else
+    {
+        NSLog(@"Запись прошла успешно");
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//Получаем контекст
+-(NSManagedObjectContext*)takeContext{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[NSApplication sharedApplication]delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
 }
-*/
 
+//Получение данных из CoreData
+-(NSArray*)dataFromCoreData{
+    NSManagedObjectContext *context = [self takeContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    return [context executeFetchRequest:fetchRequest error:nil];
+}
 @end

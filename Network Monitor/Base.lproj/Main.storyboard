@@ -646,6 +646,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveButton:" target="cm4-sy-EsQ" id="8kO-wv-BGA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -657,10 +660,13 @@
                             <constraint firstItem="6OL-db-YI6" firstAttribute="top" secondItem="sxg-cp-WAR" secondAttribute="top" constant="25" id="dD9-vy-ppX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="insertGroupName" destination="6OL-db-YI6" id="jy0-7g-rgd"/>
+                    </connections>
                 </viewController>
                 <customObject id="XLy-9Z-ct2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="-39"/>
+            <point key="canvasLocation" x="731" y="5"/>
         </scene>
         <!--Add Host View Controller-->
         <scene sceneID="zpH-uC-tpU">
@@ -722,7 +728,7 @@
                 </viewController>
                 <customObject id="Ng3-Sh-QC3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="226.5"/>
+            <point key="canvasLocation" x="731" y="307.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">

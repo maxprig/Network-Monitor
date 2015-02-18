@@ -9,5 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AddGroupViewController : NSViewController
+@property (weak) IBOutlet NSTextField *insertGroupName;
+- (IBAction)saveButton:(NSButton *)sender;
 
 @end
