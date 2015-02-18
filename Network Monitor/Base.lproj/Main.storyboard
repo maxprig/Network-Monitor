@@ -64,6 +64,12 @@
                                                 <segue destination="MLK-hP-mkt" kind="show" id="LzL-Qk-neh"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Добавить группу" id="g1q-uj-ZP3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="cm4-sy-EsQ" kind="show" id="3Dc-uc-IO0"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Очистить базу" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="clearDataBase:" target="Voe-Tx-rLC" id="LiW-Yn-CIB"/>
@@ -618,6 +624,44 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--Add Group View Controller-->
+        <scene sceneID="kEZ-ms-CAc">
+            <objects>
+                <viewController id="cm4-sy-EsQ" customClass="AddGroupViewController" sceneMemberID="viewController">
+                    <view key="view" id="sxg-cp-WAR">
+                        <rect key="frame" x="0.0" y="0.0" width="332" height="116"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-db-YI6">
+                                <rect key="frame" x="25" y="69" width="282" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="Введите название новой группы" drawsBackground="YES" id="Hr4-bo-S9M">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qeE-DM-O2Y">
+                                <rect key="frame" x="116" y="18" width="100" height="32"/>
+                                <buttonCell key="cell" type="push" title="Записать" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UUm-qk-Q4L">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6OL-db-YI6" firstAttribute="leading" secondItem="sxg-cp-WAR" secondAttribute="leading" constant="25" id="0Wc-WN-E9m"/>
+                            <constraint firstItem="qeE-DM-O2Y" firstAttribute="top" secondItem="6OL-db-YI6" secondAttribute="top" constant="45" id="FOB-tX-0eK"/>
+                            <constraint firstItem="qeE-DM-O2Y" firstAttribute="centerX" secondItem="6OL-db-YI6" secondAttribute="centerX" id="JoT-IF-os2"/>
+                            <constraint firstAttribute="trailing" secondItem="6OL-db-YI6" secondAttribute="trailing" constant="25" id="KWa-ia-aAc"/>
+                            <constraint firstAttribute="bottom" secondItem="qeE-DM-O2Y" secondAttribute="bottom" constant="25" id="TYY-WK-L87"/>
+                            <constraint firstItem="6OL-db-YI6" firstAttribute="top" secondItem="sxg-cp-WAR" secondAttribute="top" constant="25" id="dD9-vy-ppX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="XLy-9Z-ct2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="-39"/>
+        </scene>
         <!--Add Host View Controller-->
         <scene sceneID="zpH-uC-tpU">
             <objects>
@@ -678,7 +722,7 @@
                 </viewController>
                 <customObject id="Ng3-Sh-QC3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779" y="236.5"/>
+            <point key="canvasLocation" x="737" y="226.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -719,10 +763,10 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="641" height="420"/>
-                                            <size key="maxSize" width="641" height="10000000"/>
+                                            <size key="maxSize" width="643" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="641" height="420"/>
-                                            <size key="maxSize" width="641" height="10000000"/>
+                                            <size key="maxSize" width="643" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

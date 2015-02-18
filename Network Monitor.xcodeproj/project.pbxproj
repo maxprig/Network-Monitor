@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		570507321A95142000CB4E18 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507311A95142000CB4E18 /* Group.m */; };
+		570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507341A951C7100CB4E18 /* AddGroupViewController.m */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
 		57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69E21A5BE1C400C427B1 /* ViewController.m */; };
@@ -34,6 +35,8 @@
 /* Begin PBXFileReference section */
 		570507301A95142000CB4E18 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = CoreData/Group.h; sourceTree = "<group>"; };
 		570507311A95142000CB4E18 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
+		570507331A951C7100CB4E18 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
+		570507341A951C7100CB4E18 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CC69DC1A5BE1C400C427B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */,
 				57CC69E11A5BE1C400C427B1 /* ViewController.h */,
 				57CC69E21A5BE1C400C427B1 /* ViewController.m */,
+				570507331A951C7100CB4E18 /* AddGroupViewController.h */,
+				570507341A951C7100CB4E18 /* AddGroupViewController.m */,
 				57CC6A001A5BE28F00C427B1 /* AddHostViewController.h */,
 				57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */,
 				57CC69E71A5BE1C400C427B1 /* Images.xcassets */,
@@ -265,6 +270,7 @@
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
 				57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */,
 				57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */,
+				570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */,
 				57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */,
 				57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
