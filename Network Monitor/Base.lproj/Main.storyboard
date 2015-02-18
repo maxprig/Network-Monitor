@@ -721,6 +721,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="groupChange" destination="FuO-1d-GJ7" id="j8N-eI-u8c"/>
                         <outlet property="ipAddressField" destination="4nk-uS-pXU" id="mpy-Wd-4ak"/>
                         <outlet property="portField" destination="n0e-f1-cov" id="e7I-fU-gZ7"/>
                         <outlet property="statusLabel" destination="fdH-j1-hqg" id="tQg-QT-HOp"/>
