@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		570507321A95142000CB4E18 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507311A95142000CB4E18 /* Group.m */; };
 		570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507341A951C7100CB4E18 /* AddGroupViewController.m */; };
+		57A9D8651A9E606F0007BC18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A9D8641A9E606F0007BC18 /* CFNetwork.framework */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
 		57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69E21A5BE1C400C427B1 /* ViewController.m */; };
@@ -37,6 +38,7 @@
 		570507311A95142000CB4E18 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
 		570507331A951C7100CB4E18 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
 		570507341A951C7100CB4E18 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
+		57A9D8641A9E606F0007BC18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CC69DC1A5BE1C400C427B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A9D8651A9E606F0007BC18 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +95,7 @@
 		57CC69CE1A5BE1C400C427B1 = {
 			isa = PBXGroup;
 			children = (
+				57A9D8641A9E606F0007BC18 /* CFNetwork.framework */,
 				57CC69D91A5BE1C400C427B1 /* Network Monitor */,
 				57CC69F31A5BE1C500C427B1 /* Network MonitorTests */,
 				57CC69D81A5BE1C400C427B1 /* Products */,
