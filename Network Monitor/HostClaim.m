@@ -38,41 +38,36 @@ NSNumber *hostPort = nil;
 //Пусть метод будет возвращать числовое значение, это поможет избежать ошибок и исключений во время исполнения метода
 -(int)claimHostToAddress{
     onlineHost = nil;
-    char message[] = "Hello there!\n";
-    char buf[sizeof(message)];
-    
-    int sock;
+    char message[] = "Are you ok?";
+
     struct sockaddr_in addr;
-    struct timeval  tv;
-    
-    sock = socket(AF_INET, SOCK_STREAM, 0);
-    if(sock < 0)
-    {
-        perror("socket");
-        onlineHost = false;
-        return 0;
-    }
-    
+
     addr.sin_family = AF_INET;
     addr.sin_port = htons([hostPort intValue]); // мы работаем на этом порту
     addr.sin_addr.s_addr = inet_addr([[NSString stringWithFormat:@"%@", hostAddress]UTF8String]);
-    tv.tv_sec = 5.0;
     
-    if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0)
-    {
-        perror("connect");
-        onlineHost = false;
-        return 0;
-    }
+    CFSocketRef socket = CFSocketCreate(kCFAllocatorDefault,
+                                        PF_INET,
+                                        SOCK_STREAM,
+                                        IPPROTO_TCP,
+                                        kCFSocketNoCallBack,
+                                        nil,
+                                        nil);
+
+    CFDataRef data = CFDataCreate(nil, message, (strlen(message)+1));
+    CFDataRef address = CFDataCreate(nil, (char *)&addr, sizeof(addr));
     
-    send(sock, message, sizeof(message), 0);
-    recv(sock, buf, sizeof(message), 0);
+    CFSocketError err = CFSocketConnectToAddress(socket, address, 5);//CFSocketSendData(socket, nil, data, 5);
     
-    printf(buf);
-    close(sock);
-    if (buf) {
+    if (err == kCFSocketSuccess) {
         onlineHost = true;
+    }
+    else
+    {
+        onlineHost = false;
     }
     return 0;
 }
 @end
+
+
