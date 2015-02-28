@@ -21,6 +21,7 @@
 		57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A041A5BE3A900C427B1 /* HostList.m */; };
 		57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A081A5BE64500C427B1 /* HostClaim.m */; };
 		57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */; };
+		57F6A74C1AA264CA00FCE041 /* CoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		57CC6A081A5BE64500C427B1 /* HostClaim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostClaim.m; sourceTree = "<group>"; };
 		57CC6A0A1A5BE6DE00C427B1 /* HostObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostObject.h; sourceTree = "<group>"; };
 		57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostObject.m; sourceTree = "<group>"; };
+		57F6A74A1AA264CA00FCE041 /* CoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHandler.h; sourceTree = "<group>"; };
+		57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 		57CC6A061A5BE3AC00C427B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				57F6A74A1AA264CA00FCE041 /* CoreDataHandler.h */,
+				57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */,
 				570507301A95142000CB4E18 /* Group.h */,
 				570507311A95142000CB4E18 /* Group.m */,
 				57CC6A041A5BE3A900C427B1 /* HostList.m */,
@@ -268,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F6A74C1AA264CA00FCE041 /* CoreDataHandler.m in Sources */,
 				570507321A95142000CB4E18 /* Group.m in Sources */,
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
