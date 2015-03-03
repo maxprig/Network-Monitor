@@ -9,7 +9,7 @@
 #import "CoreDataHandler.h"
 
 @implementation CoreDataHandler
-
+/*
 + (CoreDataHandler*)sharedObject
 {
     @synchronized(self)
@@ -34,6 +34,6 @@
         _persistentStoreManagedObjectContext = store.persistentStoreManagedObjectContext;
     }
     return self;
-}
+}*/
 
 @end

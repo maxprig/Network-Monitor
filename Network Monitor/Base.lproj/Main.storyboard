@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
@@ -700,14 +700,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FuO-1d-GJ7">
-                                <rect key="frame" x="181" y="78" width="134" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="Группа" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="tmi-wT-x8q">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </comboBoxCell>
-                            </comboBox>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYV-1L-b23">
                                 <rect key="frame" x="14" y="25" width="304" height="32"/>
                                 <buttonCell key="cell" type="push" title="Записать" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wWg-Ew-lV7">
@@ -718,10 +710,18 @@
                                     <action selector="saveButton:" target="MLK-hP-mkt" id="ZdN-qr-wA2"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wak-Cf-EeY">
+                                <rect key="frame" x="179" y="77" width="136" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="jcN-ye-vup">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="grR-OL-KSo"/>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="groupChange" destination="FuO-1d-GJ7" id="j8N-eI-u8c"/>
+                        <outlet property="groupChangeMenu" destination="wak-Cf-EeY" id="cbe-m2-Yvk"/>
                         <outlet property="ipAddressField" destination="4nk-uS-pXU" id="mpy-Wd-4ak"/>
                         <outlet property="portField" destination="n0e-f1-cov" id="e7I-fU-gZ7"/>
                         <outlet property="statusLabel" destination="fdH-j1-hqg" id="tQg-QT-HOp"/>

@@ -14,7 +14,8 @@
 @property (weak) IBOutlet NSTextField *portField;
 
 @property (weak) IBOutlet NSTextField *statusLabel;
-@property (weak) IBOutlet NSComboBox *groupChange;
+@property (weak) IBOutlet NSPopUpButton *groupChangeMenu;
+
 
 - (IBAction)saveButton:(NSButton *)sender;
 
