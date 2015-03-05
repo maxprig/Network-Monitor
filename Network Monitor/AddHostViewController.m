@@ -14,13 +14,14 @@
 
 @end
 
+NSDictionary *dict;
 @implementation AddHostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    [_groupChangeMenu addItemWithTitle:@"1234"];
-    NSDictionary *dict = [self groupNameWithObjectsDictinary];
+    [_groupChangeMenu addItemWithTitle:@""];
+    dict = [self groupNameWithObjectsDictinary];
     [_groupChangeMenu addItemsWithTitles:[dict allKeys]];
 }
 
@@ -34,13 +35,18 @@
     
     NSError *saveError = nil;
     
+    if (![[_groupChangeMenu titleOfSelectedItem]isEqualToString:@""]) {
+        Group *groupObject = [dict objectForKey:[_groupChangeMenu titleOfSelectedItem]];
+        [groupObject addHostListObject:addHost];
+    }
+    
     if (![context save:&saveError]) {
         self.statusLabel.stringValue = @"Ошибка записи в базу!";
         self.statusLabel.textColor = [NSColor redColor];
     }
     else
     {
-        self.statusLabel.stringValue = @"Успешно!";
+        self.statusLabel.stringValue = @"Сохранено!";
         self.statusLabel.textColor = [NSColor greenColor];
     }
 }

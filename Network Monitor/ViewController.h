@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ViewController : NSViewController
+
 @property (assign) BOOL scan;
 
 @property (unsafe_unretained) IBOutlet NSTextView *consoleTextField;

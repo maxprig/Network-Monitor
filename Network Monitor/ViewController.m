@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HostObject.h"
 #import "HostList.h"
+#import "Group.h"
 
 @implementation ViewController
 @synthesize scan;
@@ -28,7 +29,6 @@
 - (IBAction)startButton:(NSButton *)sender {
     if (!scan) {
     scan = true;
-        
         if([[self dataFromCoreData] count]!=0){
             self.consoleTextField.string = @""; //Почистим консольку
             self.consoleTextField.string = @"Начало сканирования";
@@ -57,29 +57,32 @@
 
 -(void)doScaning{
   dispatch_async(dispatch_get_global_queue(0, 0), ^{
-      NSArray *hst = [self dataFromCoreData];
-      for (HostList *address in hst) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n Попытка соединения с %@ на порт №%@", self.consoleTextField.string, [address valueForKey:@"address"], [address valueForKey:@"port"]];
-        });
-        
-        HostObject *tmpObject = [[HostObject alloc]initWithAddress:[address valueForKey:@"address"] port:[address valueForKey:@"port"]];
-        [tmpObject doConnection];
-        
-        if ([tmpObject hostStatus] && scan) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ доступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
-            self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
-            });
-            }
-        else
-        {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-            NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ недоступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
-            self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
-            });
-            }
-          sleep(2); //Ожидаение две секунды.
+      NSArray *hst = [self takeGroupsFromCoreData];
+      for(Group *tempGroup in hst){
+          for (HostList *address in tempGroup.hostList) {
+              NSLog(@"Група: '%@'\n объект: '%@'", tempGroup.name, [address valueForKey:@"address"]);
+              dispatch_sync(dispatch_get_main_queue(), ^{
+                  self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n Попытка соединения с %@ на порт №%@", self.consoleTextField.string, [address valueForKey:@"address"], [address valueForKey:@"port"]];
+              });
+              
+              HostObject *tmpObject = [[HostObject alloc]initWithAddress:[address valueForKey:@"address"] port:[address valueForKey:@"port"]];
+              [tmpObject doConnection];
+              
+              if ([tmpObject hostStatus] && scan) {
+                  dispatch_sync(dispatch_get_main_queue(), ^{
+                      NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ доступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
+                      self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
+                  });
+              }
+              else
+              {
+                  dispatch_sync(dispatch_get_main_queue(), ^{
+                      NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ недоступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
+                      self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
+                  });
+              }
+              sleep(2); //Ожидаение две секунды.
+          }
       }
     });
     }
@@ -102,6 +105,15 @@
     NSManagedObjectContext *context = [self takeContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"HostList" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    return [context executeFetchRequest:fetchRequest error:nil];
+}
+
+//Получение групп
+-(NSArray*)takeGroupsFromCoreData{
+    NSManagedObjectContext *context = [self takeContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     return [context executeFetchRequest:fetchRequest error:nil];
 }
