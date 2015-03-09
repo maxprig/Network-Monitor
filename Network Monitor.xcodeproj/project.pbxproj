@@ -21,6 +21,9 @@
 		57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A041A5BE3A900C427B1 /* HostList.m */; };
 		57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A081A5BE64500C427B1 /* HostClaim.m */; };
 		57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */; };
+		57F541441AADAB3E005622CB /* MainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F541431AADAB3E005622CB /* MainTableView.m */; };
+		57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5417A1AAE00A7005622CB /* CustomCell.m */; };
+		57F5417D1AAE05A1005622CB /* girl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57F5417C1AAE05A1005622CB /* girl.gif */; };
 		57F6A74C1AA264CA00FCE041 /* CoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,11 @@
 		57CC6A081A5BE64500C427B1 /* HostClaim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostClaim.m; sourceTree = "<group>"; };
 		57CC6A0A1A5BE6DE00C427B1 /* HostObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostObject.h; sourceTree = "<group>"; };
 		57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostObject.m; sourceTree = "<group>"; };
+		57F541421AADAB3E005622CB /* MainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableView.h; sourceTree = "<group>"; };
+		57F541431AADAB3E005622CB /* MainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableView.m; sourceTree = "<group>"; };
+		57F541791AAE00A7005622CB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		57F5417A1AAE00A7005622CB /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		57F5417C1AAE05A1005622CB /* girl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = girl.gif; path = ../../../Pictures/girl.gif; sourceTree = "<group>"; };
 		57F6A74A1AA264CA00FCE041 /* CoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHandler.h; sourceTree = "<group>"; };
 		57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,12 +129,17 @@
 				57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */,
 				57CC69E11A5BE1C400C427B1 /* ViewController.h */,
 				57CC69E21A5BE1C400C427B1 /* ViewController.m */,
+				57F541421AADAB3E005622CB /* MainTableView.h */,
+				57F541431AADAB3E005622CB /* MainTableView.m */,
 				570507331A951C7100CB4E18 /* AddGroupViewController.h */,
 				570507341A951C7100CB4E18 /* AddGroupViewController.m */,
 				57CC6A001A5BE28F00C427B1 /* AddHostViewController.h */,
 				57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */,
 				57CC69E71A5BE1C400C427B1 /* Images.xcassets */,
 				57CC69E91A5BE1C500C427B1 /* Main.storyboard */,
+				57F5417C1AAE05A1005622CB /* girl.gif */,
+				57F541791AAE00A7005622CB /* CustomCell.h */,
+				57F5417A1AAE00A7005622CB /* CustomCell.m */,
 				57CC69E41A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld */,
 				57CAC51E1A5C0F5900019DBC /* ConnectionObjects */,
 				57CC6A061A5BE3AC00C427B1 /* CoreData */,
@@ -255,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57CC69E81A5BE1C400C427B1 /* Images.xcassets in Resources */,
+				57F5417D1AAE05A1005622CB /* girl.gif in Resources */,
 				57CC69EB1A5BE1C500C427B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +289,7 @@
 			files = (
 				57F6A74C1AA264CA00FCE041 /* CoreDataHandler.m in Sources */,
 				570507321A95142000CB4E18 /* Group.m in Sources */,
+				57F541441AADAB3E005622CB /* MainTableView.m in Sources */,
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
@@ -284,6 +299,7 @@
 				57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */,
 				57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
+				57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
