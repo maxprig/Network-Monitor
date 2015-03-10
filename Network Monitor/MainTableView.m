@@ -21,8 +21,8 @@
     
     // Get a new ViewCell
     CustomCell *cellView = [tableView makeViewWithIdentifier:@"Cell" owner:self];
-    //cellView.rowSizeStyle = NSTableViewRowSizeStyleCustom;
-    //cellView.frame = CGRectMake(0, 0, 660, 70);
+    cellView.rowSizeStyle = NSTableViewRowSizeStyleCustom;
+    
     
     if (cellView) {
         cellView.ipAddressCell.stringValue = @"Addres :3";
@@ -31,10 +31,19 @@
     }
     
     
+    
     return cellView;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return 1;
+    return 20;
+}
+
+- (BOOL)selectionShouldChangeInTableView:(NSTableView *)tableView{
+    return NO;
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    return 50.0;
 }
 @end
