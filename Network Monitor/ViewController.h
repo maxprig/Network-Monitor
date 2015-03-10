@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MainTableView.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (assign) BOOL scan;
 
 @property (unsafe_unretained) IBOutlet NSTextView *consoleTextField;
 
+@property (weak) IBOutlet MainTableView *myTableView;
 
 @property (weak) IBOutlet NSTextField *statusLabel;
 
