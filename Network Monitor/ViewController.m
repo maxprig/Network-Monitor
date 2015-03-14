@@ -10,6 +10,7 @@
 #import "HostObject.h"
 #import "HostList.h"
 #import "Group.h"
+#import "HostsFromGroupSigletone.h"
 
 @implementation ViewController
 @synthesize scan;
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     
     
 }
 
@@ -30,15 +32,12 @@
     if (!scan) {
     scan = true;
         if([[self dataFromCoreData] count]!=0){
-            self.consoleTextField.string = @""; //Почистим консольку
-            self.consoleTextField.string = @"Начало сканирования";
             self.statusLabel.stringValue = @"В работе";
             self.statusLabel.textColor = [NSColor greenColor];
             [self doScaning];
         }
         else
         {
-                self.consoleTextField.string = @"В базе нет записей";
             scan = false;
             self.statusLabel.stringValue = @"Остановлена";
             self.statusLabel.textColor = [NSColor redColor];
@@ -49,42 +48,58 @@
 - (IBAction)stopButton:(NSButton *)sender {
     if (scan) {
     scan = false;
-    self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n Остановка сканирования", self.consoleTextField.string];
         self.statusLabel.stringValue = @"Остановлена";
         self.statusLabel.textColor = [NSColor redColor];
     }
 }
 
+
+//Свойство hostStatus типа BOOL говорит нам о доступности хоста.
 -(void)doScaning{
   dispatch_async(dispatch_get_global_queue(0, 0), ^{
-      NSArray *hst = [self takeGroupsFromCoreData];
-      for(Group *tempGroup in hst){
-          for (HostList *address in tempGroup.hostList) {
-              NSLog(@"Група: '%@'\n объект: '%@'", tempGroup.name, [address valueForKey:@"address"]);
-              dispatch_sync(dispatch_get_main_queue(), ^{
-                  self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n Попытка соединения с %@ на порт №%@", self.consoleTextField.string, [address valueForKey:@"address"], [address valueForKey:@"port"]];
-              });
-              
-              HostObject *tmpObject = [[HostObject alloc]initWithAddress:[address valueForKey:@"address"] port:[address valueForKey:@"port"]];
-              [tmpObject doConnection];
-              
-              if ([tmpObject hostStatus] && scan) {
-                  dispatch_sync(dispatch_get_main_queue(), ^{
-                      NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ доступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
-                      self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
-                  });
+      NSMutableArray *arrayWinthHostsDictinary = [NSMutableArray new];
+      
+      //Забъем данные из CoreData в словари, а потом в массив.
+      dispatch_sync(dispatch_get_global_queue(0, 0), ^{
+          NSArray *hst = [self takeGroupsFromCoreData];
+          for(Group *tempGroup in hst){
+              for (HostList *address in tempGroup.hostList) {
+                  NSLog(@"Група: '%@'\n объект: '%@'", tempGroup.name, [address valueForKey:@"address"]);
+                  
+                  NSMutableDictionary *dict = [NSMutableDictionary new];
+                  [dict setObject:[address valueForKey:@"address"] forKey:@"Address"]; //Адрес
+                  [dict setObject:[address valueForKey:@"port"] forKey:@"Port"]; //Порт
+                  [dict setObject:[tempGroup valueForKey:@"name"] forKey:@"GroupName"]; //Имя группы, к которой принадлежит хост.
+                  [dict setObject:[tempGroup valueForKey:@"groupID"] forKey:@"GroupID"]; //ID группы.
+                  [dict setObject:@"Offline" forKey:@"Online"];
+                
+                 [arrayWinthHostsDictinary addObject:dict];    //Добавляем словарик в массив.
               }
-              else
-              {
-                  dispatch_sync(dispatch_get_main_queue(), ^{
-                      NSString *msg = [NSString stringWithFormat:@"Хост %@:%@ недоступен", [address valueForKey:@"address"], [address valueForKey:@"port"]];
-                      self.consoleTextField.string = [NSString stringWithFormat:@"%@ \n %@", self.consoleTextField.string, msg];
-                  });
-              }
-              sleep(2); //Ожидаение две секунды.
           }
+      });
+      
+      //Проверяем хосты на доступность и заливаем их в массив.
+      NSMutableArray *onlineHostsFromArraWithDictinary = [NSMutableArray new];
+      
+      for (HostObject *host in arrayWinthHostsDictinary){
+          HostObject *object = [[HostObject alloc]initWithAddress:[host valueForKey:@"Address"] port:[host valueForKey:@"Port"]];
+          [object doConnection];
+          if ([object hostStatus]) {
+              [host setValue:@"Online" forKey:@"Online"];
+          }
+          else
+          {
+              [host setValue:@"Offline" forKey:@"Online"];
+          }
+          [onlineHostsFromArraWithDictinary addObject:host];
       }
+      
+      //Передаем все эти словарики в массив синглтона.
+      [[HostsFromGroupSigletone sharedInstance]setHosts:onlineHostsFromArraWithDictinary];
+      
     });
+    
+    
     }
                 
 

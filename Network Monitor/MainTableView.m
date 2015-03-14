@@ -46,4 +46,24 @@
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
     return 50.0;
 }
+
+#pragma mark -CoreData Methods-
+//Получаем контекст
+-(NSManagedObjectContext*)takeContext{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[NSApplication sharedApplication]delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+//Получение данных из CoreData
+-(NSArray*)dataFromCoreData{
+    NSManagedObjectContext *context = [self takeContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    return [context executeFetchRequest:fetchRequest error:nil];
+}
 @end
