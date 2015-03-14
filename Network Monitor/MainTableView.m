@@ -8,13 +8,14 @@
 
 #import "MainTableView.h"
 #import "CustomCell.h"
+#import "Group.h"
 
+NSMutableArray *hosts;
 @implementation MainTableView
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     // Drawing code here.
-    
 }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
@@ -25,8 +26,8 @@
     
     
     if (cellView) {
-        cellView.ipAddressCell.stringValue = @"Addres :3";
-        cellView.groupCell.stringValue = @"Group :3";
+        cellView.ipAddressCell.stringValue = [NSString stringWithFormat:@"%@", [[hosts objectAtIndex:row] valueForKey:@"address"]];
+        cellView.groupCell.stringValue = @"";
         [cellView.cellImage setImage:[NSImage imageNamed:@"girl.gif"]];
     }
     
@@ -36,7 +37,10 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return 20;
+    if (!hosts) {
+        hosts = [[NSMutableArray alloc]initWithArray:[self dataFromCoreData]];
+    }
+    return [[self dataFromCoreData]count];
 }
 
 - (BOOL)selectionShouldChangeInTableView:(NSTableView *)tableView{
@@ -62,7 +66,7 @@
 -(NSArray*)dataFromCoreData{
     NSManagedObjectContext *context = [self takeContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"HostList" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     return [context executeFetchRequest:fetchRequest error:nil];
 }

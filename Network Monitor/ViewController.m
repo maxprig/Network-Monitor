@@ -95,7 +95,6 @@
       }
       
       //Передаем все эти словарики в массив синглтона.
-      [[HostsFromGroupSigletone sharedInstance]setHosts:onlineHostsFromArraWithDictinary];
       
     });
     

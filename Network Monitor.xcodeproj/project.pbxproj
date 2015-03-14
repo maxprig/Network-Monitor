@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		570507321A95142000CB4E18 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507311A95142000CB4E18 /* Group.m */; };
 		570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507341A951C7100CB4E18 /* AddGroupViewController.m */; };
-		5743256B1AB4922800CC8F2D /* HostsFromGroupSigletone.m in Sources */ = {isa = PBXBuildFile; fileRef = 5743256A1AB4922800CC8F2D /* HostsFromGroupSigletone.m */; };
 		57A9D8651A9E606F0007BC18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A9D8641A9E606F0007BC18 /* CFNetwork.framework */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
@@ -43,8 +42,6 @@
 		570507311A95142000CB4E18 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
 		570507331A951C7100CB4E18 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
 		570507341A951C7100CB4E18 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
-		574325691AB4922800CC8F2D /* HostsFromGroupSigletone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostsFromGroupSigletone.h; sourceTree = "<group>"; };
-		5743256A1AB4922800CC8F2D /* HostsFromGroupSigletone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostsFromGroupSigletone.m; sourceTree = "<group>"; };
 		57A9D8641A9E606F0007BC18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,8 +129,6 @@
 				57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */,
 				57CC69E11A5BE1C400C427B1 /* ViewController.h */,
 				57CC69E21A5BE1C400C427B1 /* ViewController.m */,
-				574325691AB4922800CC8F2D /* HostsFromGroupSigletone.h */,
-				5743256A1AB4922800CC8F2D /* HostsFromGroupSigletone.m */,
 				57F541421AADAB3E005622CB /* MainTableView.h */,
 				57F541431AADAB3E005622CB /* MainTableView.m */,
 				570507331A951C7100CB4E18 /* AddGroupViewController.h */,
@@ -304,7 +299,6 @@
 				57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */,
 				57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
-				5743256B1AB4922800CC8F2D /* HostsFromGroupSigletone.m in Sources */,
 				57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
