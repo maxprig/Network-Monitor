@@ -9,6 +9,8 @@
 #import "MainTableView.h"
 #import "CustomCell.h"
 #import "Group.h"
+#import "HostList.h"
+#import "HostObject.h"
 
 NSMutableArray *hosts;
 @implementation MainTableView
@@ -25,11 +27,19 @@ NSMutableArray *hosts;
     cellView.rowSizeStyle = NSTableViewRowSizeStyleCustom;
     
     
+    //Надо получить название группы.
+    HostList *host = [hosts objectAtIndex:row];
+    NSString *str;
+    for (Group *gr in host.groups){
+        str = gr.name;
+    }
+    
     if (cellView) {
         cellView.ipAddressCell.stringValue = [NSString stringWithFormat:@"%@", [[hosts objectAtIndex:row] valueForKey:@"address"]];
-        cellView.groupCell.stringValue = @"";
-        [cellView.cellImage setImage:[NSImage imageNamed:@"girl.gif"]];
-    }
+        cellView.groupCell.stringValue = str;
+
+            [cellView.cellImage setImage:[NSImage imageNamed:@"offline.png"]];
+        }
     
     
     

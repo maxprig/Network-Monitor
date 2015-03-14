@@ -2,7 +2,7 @@
 //  Group.h
 //  Network Monitor
 //
-//  Created by Максим on 18.02.15.
+//  Created by Максим on 14.03.15.
 //  Copyright (c) 2015 Prigozhenkov Maxim. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Group : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * groupID;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *hostList;
 @end
 

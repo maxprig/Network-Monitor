@@ -10,7 +10,6 @@
 #import "HostObject.h"
 #import "HostList.h"
 #import "Group.h"
-#import "HostsFromGroupSigletone.h"
 
 @implementation ViewController
 @synthesize scan;

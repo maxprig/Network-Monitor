@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		570507321A95142000CB4E18 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507311A95142000CB4E18 /* Group.m */; };
 		570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570507341A951C7100CB4E18 /* AddGroupViewController.m */; };
+		572B92621AB4C1B300474F1A /* offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 572B92601AB4C1B300474F1A /* offline.png */; };
+		572B92631AB4C1B300474F1A /* online.gif in Resources */ = {isa = PBXBuildFile; fileRef = 572B92611AB4C1B300474F1A /* online.gif */; };
+		57407F7E1AB4BD6E004DE25A /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 57407F7D1AB4BD6E004DE25A /* Group.m */; };
+		57407F811AB4BD6F004DE25A /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57407F801AB4BD6F004DE25A /* HostList.m */; };
 		57A9D8651A9E606F0007BC18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A9D8641A9E606F0007BC18 /* CFNetwork.framework */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
@@ -18,13 +21,11 @@
 		57CC69EB1A5BE1C500C427B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CC69E91A5BE1C500C427B1 /* Main.storyboard */; };
 		57CC69F71A5BE1C500C427B1 /* Network_MonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69F61A5BE1C500C427B1 /* Network_MonitorTests.m */; };
 		57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */; };
-		57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A041A5BE3A900C427B1 /* HostList.m */; };
 		57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A081A5BE64500C427B1 /* HostClaim.m */; };
 		57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */; };
 		57F541441AADAB3E005622CB /* MainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F541431AADAB3E005622CB /* MainTableView.m */; };
 		57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5417A1AAE00A7005622CB /* CustomCell.m */; };
 		57F5417D1AAE05A1005622CB /* girl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57F5417C1AAE05A1005622CB /* girl.gif */; };
-		57F6A74C1AA264CA00FCE041 /* CoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		570507301A95142000CB4E18 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = CoreData/Group.h; sourceTree = "<group>"; };
-		570507311A95142000CB4E18 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
 		570507331A951C7100CB4E18 /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGroupViewController.h; sourceTree = "<group>"; };
 		570507341A951C7100CB4E18 /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGroupViewController.m; sourceTree = "<group>"; };
+		572B92601AB4C1B300474F1A /* offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = offline.png; path = icons/offline.png; sourceTree = "<group>"; };
+		572B92611AB4C1B300474F1A /* online.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = online.gif; path = icons/online.gif; sourceTree = "<group>"; };
+		57407F7C1AB4BD6E004DE25A /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = CoreData/Group.h; sourceTree = "<group>"; };
+		57407F7D1AB4BD6E004DE25A /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
+		57407F7F1AB4BD6F004DE25A /* HostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostList.h; path = CoreData/HostList.h; sourceTree = "<group>"; };
+		57407F801AB4BD6F004DE25A /* HostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostList.m; path = CoreData/HostList.m; sourceTree = "<group>"; };
 		57A9D8641A9E606F0007BC18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,8 +63,6 @@
 		57CC69F61A5BE1C500C427B1 /* Network_MonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Network_MonitorTests.m; sourceTree = "<group>"; };
 		57CC6A001A5BE28F00C427B1 /* AddHostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHostViewController.h; sourceTree = "<group>"; };
 		57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHostViewController.m; sourceTree = "<group>"; };
-		57CC6A031A5BE3A900C427B1 /* HostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostList.h; path = CoreData/HostList.h; sourceTree = "<group>"; };
-		57CC6A041A5BE3A900C427B1 /* HostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostList.m; path = CoreData/HostList.m; sourceTree = "<group>"; };
 		57CC6A071A5BE64500C427B1 /* HostClaim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostClaim.h; sourceTree = "<group>"; };
 		57CC6A081A5BE64500C427B1 /* HostClaim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostClaim.m; sourceTree = "<group>"; };
 		57CC6A0A1A5BE6DE00C427B1 /* HostObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostObject.h; sourceTree = "<group>"; };
@@ -69,8 +72,6 @@
 		57F541791AAE00A7005622CB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		57F5417A1AAE00A7005622CB /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		57F5417C1AAE05A1005622CB /* girl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = girl.gif; path = ../../../Pictures/girl.gif; sourceTree = "<group>"; };
-		57F6A74A1AA264CA00FCE041 /* CoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHandler.h; sourceTree = "<group>"; };
-		57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		572B925F1AB4C19300474F1A /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				572B92601AB4C1B300474F1A /* offline.png */,
+				572B92611AB4C1B300474F1A /* online.gif */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		57CAC51E1A5C0F5900019DBC /* ConnectionObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 				57F541791AAE00A7005622CB /* CustomCell.h */,
 				57F5417A1AAE00A7005622CB /* CustomCell.m */,
 				57CC69E41A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld */,
+				572B925F1AB4C19300474F1A /* Icons */,
 				57CAC51E1A5C0F5900019DBC /* ConnectionObjects */,
 				57CC6A061A5BE3AC00C427B1 /* CoreData */,
 				57CC69DA1A5BE1C400C427B1 /* Supporting Files */,
@@ -177,12 +188,10 @@
 		57CC6A061A5BE3AC00C427B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				57F6A74A1AA264CA00FCE041 /* CoreDataHandler.h */,
-				57F6A74B1AA264CA00FCE041 /* CoreDataHandler.m */,
-				570507301A95142000CB4E18 /* Group.h */,
-				570507311A95142000CB4E18 /* Group.m */,
-				57CC6A041A5BE3A900C427B1 /* HostList.m */,
-				57CC6A031A5BE3A900C427B1 /* HostList.h */,
+				57407F7F1AB4BD6F004DE25A /* HostList.h */,
+				57407F801AB4BD6F004DE25A /* HostList.m */,
+				57407F7C1AB4BD6E004DE25A /* Group.h */,
+				57407F7D1AB4BD6E004DE25A /* Group.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -268,7 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				57CC69E81A5BE1C400C427B1 /* Images.xcassets in Resources */,
+				572B92621AB4C1B300474F1A /* offline.png in Resources */,
 				57F5417D1AAE05A1005622CB /* girl.gif in Resources */,
+				572B92631AB4C1B300474F1A /* online.gif in Resources */,
 				57CC69EB1A5BE1C500C427B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,13 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57F6A74C1AA264CA00FCE041 /* CoreDataHandler.m in Sources */,
-				570507321A95142000CB4E18 /* Group.m in Sources */,
+				57407F7E1AB4BD6E004DE25A /* Group.m in Sources */,
 				57F541441AADAB3E005622CB /* MainTableView.m in Sources */,
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
+				57407F811AB4BD6F004DE25A /* HostList.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
-				57CC6A051A5BE3A900C427B1 /* HostList.m in Sources */,
 				57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */,
 				570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */,
 				57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */,
