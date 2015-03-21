@@ -15,6 +15,8 @@
 
 @property (unsafe_unretained) IBOutlet NSTextView *consoleTextField;
 
+@property (weak) IBOutlet NSTextField *console;
+
 @property (weak) IBOutlet MainTableView *myTableView;
 
 @property (weak) IBOutlet NSTextField *statusLabel;

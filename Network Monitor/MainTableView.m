@@ -29,16 +29,18 @@ NSMutableArray *hosts;
     
     //Надо получить название группы.
     HostList *host = [hosts objectAtIndex:row];
-    NSString *str;
+    NSString *str = @"";
     for (Group *gr in host.groups){
-        str = gr.name;
+        if (gr) {
+            str = gr.name;
+        }
     }
     
     if (cellView) {
         cellView.ipAddressCell.stringValue = [NSString stringWithFormat:@"%@", [[hosts objectAtIndex:row] valueForKey:@"address"]];
         cellView.groupCell.stringValue = str;
 
-            [cellView.cellImage setImage:[NSImage imageNamed:@"offline.png"]];
+        [cellView.cellImage setImage:[NSImage imageNamed:@"offline.png"]];
         }
     
     

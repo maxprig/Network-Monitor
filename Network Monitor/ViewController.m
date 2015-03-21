@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     
+    [self startProgress];
     
 }
 
@@ -27,9 +27,9 @@
     // Update the view, if already loaded.
 }
 
-- (IBAction)startButton:(NSButton *)sender {
+-(void)startProgress{
     if (!scan) {
-    scan = true;
+        scan = true;
         if([[self dataFromCoreData] count]!=0){
             self.statusLabel.stringValue = @"В работе";
             self.statusLabel.textColor = [NSColor greenColor];
@@ -82,13 +82,15 @@
       
       for (HostObject *host in arrayWinthHostsDictinary){
           HostObject *object = [[HostObject alloc]initWithAddress:[host valueForKey:@"Address"] port:[host valueForKey:@"Port"]];
+          _console.stringValue = [NSString stringWithFormat:@"Попытка соединения с %@", [host valueForKey:@"Address"]];
           [object doConnection];
           if ([object hostStatus]) {
-              [host setValue:@"Online" forKey:@"Online"];
+              _console.stringValue = [NSString stringWithFormat:@"Получен ответ от %@. \n Хост доступен", [host valueForKey:@"Address"]];
           }
           else
           {
-              [host setValue:@"Offline" forKey:@"Online"];
+              _console.stringValue = [NSString stringWithFormat:@"Нет ответа от %@. \n Хост недоступен", [host valueForKey:@"Address"]];
+              sleep(3);
           }
           [onlineHostsFromArraWithDictinary addObject:host];
       }

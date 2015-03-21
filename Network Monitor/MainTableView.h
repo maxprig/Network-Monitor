@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MainTableView : NSScrollView <NSTableViewDelegate, NSTableViewDataSource>
+@interface MainTableView : NSTableView <NSTableViewDelegate, NSTableViewDataSource>
 
 @end
