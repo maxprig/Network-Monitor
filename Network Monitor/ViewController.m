@@ -10,6 +10,8 @@
 #import "HostObject.h"
 #import "HostList.h"
 #import "Group.h"
+#import "OnlineList.h"
+
 
 @implementation ViewController
 @synthesize scan;
@@ -18,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self startProgress];
+    
     
 }
 
@@ -56,52 +59,87 @@
 //Свойство hostStatus типа BOOL говорит нам о доступности хоста.
 -(void)doScaning{
   dispatch_async(dispatch_get_global_queue(0, 0), ^{
-      NSMutableArray *arrayWinthHostsDictinary = [NSMutableArray new];
-      
-      //Забъем данные из CoreData в словари, а потом в массив.
-      dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-          NSArray *hst = [self takeGroupsFromCoreData];
-          for(Group *tempGroup in hst){
-              for (HostList *address in tempGroup.hostList) {
-                  NSLog(@"Група: '%@'\n объект: '%@'", tempGroup.name, [address valueForKey:@"address"]);
-                  
-                  NSMutableDictionary *dict = [NSMutableDictionary new];
-                  [dict setObject:[address valueForKey:@"address"] forKey:@"Address"]; //Адрес
-                  [dict setObject:[address valueForKey:@"port"] forKey:@"Port"]; //Порт
-                  [dict setObject:[tempGroup valueForKey:@"name"] forKey:@"GroupName"]; //Имя группы, к которой принадлежит хост.
-                  [dict setObject:[tempGroup valueForKey:@"groupID"] forKey:@"GroupID"]; //ID группы.
-                  [dict setObject:@"Offline" forKey:@"Online"];
-                
-                 [arrayWinthHostsDictinary addObject:dict];    //Добавляем словарик в массив.
+      while (scan) {
+          _console.stringValue = @"Начало сканирования.";
+          sleep(3);
+          NSArray *myHosts = [self dataFromCoreData]; //Получаем все хосты.
+          
+          NSMutableArray *hostsForScan = [NSMutableArray new]; //Будем сюда забивать полную информацию о хостах.
+          
+          
+          //Массивы в которых будут хосты, которые в сети и не в сети.
+          NSMutableArray *online = [NSMutableArray new];
+          NSMutableArray *offline = [NSMutableArray new];
+          
+          //=============================================================================================================
+          //Соберем информацию о хостах для сканирования
+          for (HostList *hst in myHosts){
+              //Всю информацию о хосте будем забивать в словарики.
+              NSMutableDictionary *aboutHost = [NSMutableDictionary new];
+              
+              [aboutHost setObject:hst.address forKey:@"Address"]; //Адрес хоста.
+              [aboutHost setObject:hst.port forKey:@"Port"]; //Номер порта.
+              
+              //Теперь надо проверит, есть ли у хоста группа.
+              if ([hst.groups count]) {
+                  //Если есть группы, то добавляем ее название в словарь.
+                  for (Group *group in hst.groups){
+                      [aboutHost setObject:group.name forKey:@"GroupName"];
+                      [aboutHost setObject:group.groupID forKey:@"GroupID"];
+                  }
               }
+              else {
+                  //Если нет группы, то просто напишем, что без группы.
+                  [aboutHost setObject:@"Без группы" forKey:@"GroupName"];
+                  [aboutHost setObject:@"0" forKey:@"GroupID"];
+              }
+              
+              //Теперь просто добавим этот словарик с информацией о хосте в массив.
+              [hostsForScan addObject:aboutHost];
           }
-      });
-      
-      //Проверяем хосты на доступность и заливаем их в массив.
-      NSMutableArray *onlineHostsFromArraWithDictinary = [NSMutableArray new];
-      
-      for (HostObject *host in arrayWinthHostsDictinary){
-          HostObject *object = [[HostObject alloc]initWithAddress:[host valueForKey:@"Address"] port:[host valueForKey:@"Port"]];
-          _console.stringValue = [NSString stringWithFormat:@"Попытка соединения с %@", [host valueForKey:@"Address"]];
-          [object doConnection];
-          if ([object hostStatus]) {
-              _console.stringValue = [NSString stringWithFormat:@"Получен ответ от %@. \n Хост доступен", [host valueForKey:@"Address"]];
+          //=============================================================================================================
+          //Теперь, когда собрана вся информация, можно приступать к сканированию.
+          
+          //Для начала очистим табличку с данными о хостах.
+          [self clearOnlineList];
+          
+          for (NSDictionary *hostInfo in hostsForScan){
+              HostObject *host = [[HostObject alloc]initWithAddress:[hostInfo objectForKey:@"Address"] port:[hostInfo objectForKey:@"Port"]];
+              _console.stringValue = [NSString stringWithFormat:@" Попытка соединения с %@ из группы '%@'. Порт №%@.", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
+              sleep(1);
+              [host doConnection]; //Пытаемся соединиться.
+              
+              //Проверяем результат.
+              if ([host hostStatus]) {
+                  _console.stringValue = [NSString stringWithFormat:@" Получен ответ от %@ из группы '%@'. Порт №%@ \n Хост доступен. ", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
+                  [online addObject:host];
+                  [self saveInfoAboutHostIntoDataBase:hostInfo online:YES]; //Записываем хост в табличку.
+                  sleep(3);
+              }
+              else
+              {
+                  _console.stringValue = [NSString stringWithFormat:@" Нет ответа от %@ из группы '%@'. Порт №%@ \n Хост или сервис недоступен.", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
+                  [offline addObject:host];
+                  [self saveInfoAboutHostIntoDataBase:hostInfo online:NO]; //Записываем хост в табличку.
+                  sleep(3);
+              }
+              
           }
-          else
-          {
-              _console.stringValue = [NSString stringWithFormat:@"Нет ответа от %@. \n Хост недоступен", [host valueForKey:@"Address"]];
-              sleep(3);
-          }
-          [onlineHostsFromArraWithDictinary addObject:host];
+          
+          //=============================================================================================================
+          //Производим запись в табличку OnlineList информации о хостах.
+          
+          NSLog(@"Online - %lu \n Offline - %lu", (unsigned long)[online count], (unsigned long)[offline count]);
+          _console.stringValue = [NSString stringWithFormat:@" В сети - %lu хостов. \n Не в сети - %lu хостов. \n Ожидание.", (unsigned long)[online count], (unsigned long)[offline count]];
+          sleep(60);
       }
       
-      //Передаем все эти словарики в массив синглтона.
-      
-    });
+  });
     
     
     }
                 
+
 
 
 #pragma mark -Методы работы с CoreData-
@@ -113,6 +151,42 @@
         context = [delegate managedObjectContext];
     }
     return context;
+}
+
+//Метод очистки Onlinelist
+-(void)clearOnlineList{
+    NSManagedObjectContext *context = [self takeContext];
+    if (![[self onlineListFromCoreData]count]) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSArray *array = [context executeFetchRequest:fetchRequest error:nil];
+        if ([array count]!=0) {
+            for (NSManagedObject *object in array) {
+                [context deleteObject:object];
+            }
+        }
+    }
+}
+
+//Метод записи в OnlineList
+-(void)saveInfoAboutHostIntoDataBase:(NSDictionary*)object online:(BOOL)online{
+    NSManagedObjectContext *context = [self takeContext];
+    OnlineList *addIntoList = [NSEntityDescription insertNewObjectForEntityForName:@"OnlineList" inManagedObjectContext:context];
+    if (addIntoList) {
+        addIntoList.address = [object valueForKey:@"Address"];
+        addIntoList.port = [object valueForKey:@"Port"];
+        addIntoList.groupName = [object valueForKey:@"GroupName"];
+        addIntoList.groupId = [object valueForKey:@"GroupID"];
+        
+        if (online) {
+            addIntoList.online = @1;
+        }
+        else{
+            addIntoList.online = @0;
+        }
+    }
+    
 }
 
 //Получение данных из CoreData
@@ -129,6 +203,15 @@
     NSManagedObjectContext *context = [self takeContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Group" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    return [context executeFetchRequest:fetchRequest error:nil];
+}
+
+//Получение записей из OnlineList
+-(NSArray*)onlineListFromCoreData{
+    NSManagedObjectContext *context = [self takeContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     return [context executeFetchRequest:fetchRequest error:nil];
 }

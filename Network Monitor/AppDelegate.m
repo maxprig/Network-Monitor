@@ -18,6 +18,17 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    // Очистим табличку с временным хранилищем информации о хостах.
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSArray *array = [context executeFetchRequest:fetchRequest error:nil];
+        if ([array count]!=0) {
+            for (NSManagedObject *object in array) {
+                [context deleteObject:object];
+            }
+        }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -114,7 +125,7 @@
 - (IBAction)clearDataBase:(NSMenuItem *)sender {
     NSManagedObjectContext *context = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
-    NSArray *arr = @[@"HostList", @"Group"];
+    NSArray *arr = @[@"HostList", @"Group", @"OnlineList"];
     for (NSString *obj in arr) {
         NSEntityDescription *entity = [NSEntityDescription entityForName:obj inManagedObjectContext:context];
         [fetchRequest setEntity:entity];

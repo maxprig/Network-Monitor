@@ -52,7 +52,7 @@
     return context;
 }
 
-//Получение данных из CoreData
+//Получение групп из CoreData
 -(NSArray*)dataFromCoreData{
     NSManagedObjectContext *context = [self takeContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];

@@ -52,6 +52,7 @@ NSDictionary *dict;
 }
 
 #pragma mark -CoreData Methids-
+//Получение групп.
 -(NSArray*)dataFromCoreData{
     NSManagedObjectContext *context = [self takeContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];

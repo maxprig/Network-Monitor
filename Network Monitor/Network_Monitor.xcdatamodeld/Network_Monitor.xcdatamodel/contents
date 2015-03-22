@@ -10,8 +10,16 @@
         <attribute name="port" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="hostList" inverseEntity="Group" syncable="YES"/>
     </entity>
+    <entity name="OnlineList" representedClassName="OnlineList" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="online" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Group" positionX="-245" positionY="-97" width="128" height="88"/>
-        <element name="HostList" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Group" positionX="-587" positionY="-144" width="128" height="88"/>
+        <element name="HostList" positionX="-290" positionY="-144" width="128" height="88"/>
+        <element name="OnlineList" positionX="-585" positionY="18" width="128" height="118"/>
     </elements>
 </model>
