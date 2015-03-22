@@ -53,7 +53,7 @@ HostClaim *claimToHost = nil;
             if (![claimToHost onlineHost]&& i == 5 ) {
                 hostStatus = false;
             }
-            sleep(5); //Ожидаем 10 секунд до следующей попытки
+            sleep(3); //Ожидаем 3 секунды до следующей попытки
         }
     }
 }

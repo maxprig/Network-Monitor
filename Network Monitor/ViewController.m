@@ -59,48 +59,72 @@
 //Свойство hostStatus типа BOOL говорит нам о доступности хоста.
 -(void)doScaning{
   dispatch_async(dispatch_get_global_queue(0, 0), ^{
-      NSMutableArray *arrayWinthHostsDictinary = [NSMutableArray new];
-      
-      //Забъем данные из CoreData в словари, а потом в массив.
-      dispatch_sync(dispatch_get_global_queue(0, 0), ^{
-          NSArray *hst = [self takeGroupsFromCoreData];
-          for(Group *tempGroup in hst){
-              for (HostList *address in tempGroup.hostList) {
-                  NSLog(@"Група: '%@'\n объект: '%@'", tempGroup.name, [address valueForKey:@"address"]);
-                  
-                  NSMutableDictionary *dict = [NSMutableDictionary new];
-                  [dict setObject:[address valueForKey:@"address"] forKey:@"Address"]; //Адрес
-                  [dict setObject:[address valueForKey:@"port"] forKey:@"Port"]; //Порт
-                  [dict setObject:[tempGroup valueForKey:@"name"] forKey:@"GroupName"]; //Имя группы, к которой принадлежит хост.
-                  [dict setObject:[tempGroup valueForKey:@"groupID"] forKey:@"GroupID"]; //ID группы.
-                  [dict setObject:@"Offline" forKey:@"Online"];
-                
-                 [arrayWinthHostsDictinary addObject:dict];    //Добавляем словарик в массив.
+      while (scan) {
+          _console.stringValue = @"Начало сканирования.";
+          sleep(3);
+          NSArray *myHosts = [self dataFromCoreData]; //Получаем все хосты.
+          
+          NSMutableArray *hostsForScan = [NSMutableArray new]; //Будем сюда забивать полную информацию о хостах.
+          
+          
+          //Массивы в которых будут хосты, которые в сети и не в сети.
+          NSMutableArray *online = [NSMutableArray new];
+          NSMutableArray *offline = [NSMutableArray new];
+          
+          //=============================================================================================================
+          //Соберем информацию о хостах для сканирования
+          for (HostList *hst in myHosts){
+              //Всю информацию о хосте будем забивать в словарики.
+              NSMutableDictionary *aboutHost = [NSMutableDictionary new];
+              
+              [aboutHost setObject:hst.address forKey:@"Address"]; //Адрес хоста.
+              [aboutHost setObject:hst.port forKey:@"Port"]; //Номер порта.
+              
+              //Теперь надо проверит, есть ли у хоста группа.
+              if ([hst.groups count]) {
+                  //Если есть группы, то добавляем ее название в словарь.
+                  for (Group *group in hst.groups){
+                      [aboutHost setObject:group.name forKey:@"GroupName"];
+                  }
               }
+              else {
+                  //Если нет группы, то просто напишем, что без группы.
+                  [aboutHost setObject:@"Без группы" forKey:@"GroupName"];
+              }
+              
+              //Теперь просто добавим этот словарик с информацией о хосте в массив.
+              [hostsForScan addObject:aboutHost];
           }
-      });
-      
-      //Проверяем хосты на доступность и заливаем их в массив.
-      NSMutableArray *onlineHostsFromArraWithDictinary = [NSMutableArray new];
-      
-      for (HostObject *host in arrayWinthHostsDictinary){
-          HostObject *object = [[HostObject alloc]initWithAddress:[host valueForKey:@"Address"] port:[host valueForKey:@"Port"]];
-          _console.stringValue = [NSString stringWithFormat:@"Попытка соединения с %@", [host valueForKey:@"Address"]];
-          [object doConnection];
-          if ([object hostStatus]) {
-              _console.stringValue = [NSString stringWithFormat:@"Получен ответ от %@. \n Хост доступен", [host valueForKey:@"Address"]];
+          //=============================================================================================================
+          //Теперь, когда собрана вся информация, можно приступать к сканированию.
+          
+          for (NSDictionary *hostInfo in hostsForScan){
+              HostObject *host = [[HostObject alloc]initWithAddress:[hostInfo objectForKey:@"Address"] port:[hostInfo objectForKey:@"Port"]];
+              _console.stringValue = [NSString stringWithFormat:@" Попытка соединения с %@ из группы '%@'. Порт №%@.", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
+              sleep(1);
+              [host doConnection]; //Пытаемся соединиться.
+              
+              //Проверяем результат.
+              if ([host hostStatus]) {
+                  _console.stringValue = [NSString stringWithFormat:@" Получен ответ от %@ из группы '%@'. Порт №%@ \n Хост доступен. ", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
+                  [online addObject:host];
+                  sleep(3);
+              }
+              else
+              {
+                  _console.stringValue = [NSString stringWithFormat:@" Нет ответа от %@ из группы '%@'. Порт №%@ \n Хост или сервис недоступен.", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
+                  [offline addObject:host];
+                  sleep(3);
+              }
+              
           }
-          else
-          {
-              _console.stringValue = [NSString stringWithFormat:@"Нет ответа от %@. \n Хост недоступен", [host valueForKey:@"Address"]];
-              sleep(3);
-          }
-          [onlineHostsFromArraWithDictinary addObject:host];
+          
+          NSLog(@"Online - %lu \n Offline - %lu", (unsigned long)[online count], (unsigned long)[offline count]);
+          _console.stringValue = [NSString stringWithFormat:@" В сети - %lu хостов. \n Не в сети - %lu хостов. \n Ожидание.", (unsigned long)[online count], (unsigned long)[offline count]];
+          sleep(60);
       }
       
-      //Передаем все эти словарики в массив синглтона.
-      
-    });
+  });
     
     
     }
