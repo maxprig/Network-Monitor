@@ -11,6 +11,8 @@
 #import "HostList.h"
 #import "Group.h"
 
+
+
 @implementation ViewController
 @synthesize scan;
 
@@ -18,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self startProgress];
+    
     
 }
 
@@ -103,6 +106,15 @@
     }
                 
 
+#pragma mark -PlotMethods-
+#pragma mark - CPTPlotDataSource methods
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
+    return 0;
+}
+
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
+    return [NSDecimalNumber zero];
+}
 
 #pragma mark -Методы работы с CoreData-
 //Контекст

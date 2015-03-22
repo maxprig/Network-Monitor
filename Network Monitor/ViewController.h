@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MainTableView.h"
+#import <CPTPlot.h>
 
-@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, CPTPlotDataSource>
 
 @property (assign) BOOL scan;
 
@@ -23,6 +24,8 @@
 
 - (IBAction)startButton:(NSButton *)sender;
 - (IBAction)stopButton:(NSButton *)sender;
+
+@property (weak) IBOutlet NSView *graphView;
 
 @end
 
