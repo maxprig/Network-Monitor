@@ -747,19 +747,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="809" height="503"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="56" horizontalPageScroll="10" verticalLineScroll="56" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kes-SX-yie" customClass="MainTableView">
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="41" horizontalPageScroll="10" verticalLineScroll="41" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kes-SX-yie" customClass="MainTableView">
                                 <rect key="frame" x="61" y="47" width="667" height="436"/>
                                 <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="sbr-CR-f3c">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="54" rowSizeStyle="automatic" headerView="Da0-TM-1mJ" viewBased="YES" id="bef-yW-DD3">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="39" rowSizeStyle="automatic" headerView="Da0-TM-1mJ" viewBased="YES" id="bef-yW-DD3">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="661.58984375" minWidth="40" maxWidth="1000" id="YwY-LH-X10">
+                                                <tableColumn width="662" minWidth="40" maxWidth="1000" id="YwY-LH-X10">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -773,23 +773,26 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="Cell" wantsLayer="YES" id="tlI-5C-ob4" customClass="CustomCell">
-                                                            <rect key="frame" x="1" y="1" width="662" height="54"/>
+                                                            <rect key="frame" x="1" y="1" width="662" height="39"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-OM-6VJ">
-                                                                    <rect key="frame" x="3" y="15" width="67" height="36"/>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-OM-6VJ">
+                                                                    <rect key="frame" x="1" y="1" width="50" height="37"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="50" id="3lW-4x-Bal"/>
+                                                                    </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="94g-0p-b3N"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smZ-E9-eGI">
-                                                                    <rect key="frame" x="76" y="34" width="584" height="17"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smZ-E9-eGI">
+                                                                    <rect key="frame" x="76" y="21" width="587" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="IP Address" id="scr-xA-Uba">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-93-5Vx">
-                                                                    <rect key="frame" x="76" y="15" width="582" height="17"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-93-5Vx">
+                                                                    <rect key="frame" x="76" y="1" width="587" height="17"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Group" id="jJD-Jk-0Mt">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -797,6 +800,17 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="y9o-OM-6VJ" firstAttribute="top" secondItem="tlI-5C-ob4" secondAttribute="top" constant="1" id="6AP-Kj-ppU"/>
+                                                                <constraint firstItem="DBG-93-5Vx" firstAttribute="leading" secondItem="y9o-OM-6VJ" secondAttribute="trailing" constant="27" id="AMu-Ps-5zH"/>
+                                                                <constraint firstAttribute="bottom" secondItem="y9o-OM-6VJ" secondAttribute="bottom" constant="1" id="SoP-kV-1AO"/>
+                                                                <constraint firstItem="smZ-E9-eGI" firstAttribute="leading" secondItem="y9o-OM-6VJ" secondAttribute="trailing" constant="27" id="XQC-mz-Kv7"/>
+                                                                <constraint firstItem="smZ-E9-eGI" firstAttribute="top" secondItem="tlI-5C-ob4" secondAttribute="top" constant="1" id="Ze2-WA-dge"/>
+                                                                <constraint firstAttribute="trailing" secondItem="smZ-E9-eGI" secondAttribute="trailing" constant="1" id="a6D-vq-M6J"/>
+                                                                <constraint firstAttribute="trailing" secondItem="DBG-93-5Vx" secondAttribute="trailing" constant="1" id="eNT-YP-UaI"/>
+                                                                <constraint firstAttribute="bottom" secondItem="DBG-93-5Vx" secondAttribute="bottom" constant="1" id="jK9-3I-OQd"/>
+                                                                <constraint firstItem="y9o-OM-6VJ" firstAttribute="leading" secondItem="tlI-5C-ob4" secondAttribute="leading" constant="1" id="vUS-Kv-NoE"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="cellImage" destination="y9o-OM-6VJ" id="g3A-Rb-HFf"/>
                                                                 <outlet property="cellLabel" destination="smZ-E9-eGI" id="ISZ-Z1-XyQ"/>

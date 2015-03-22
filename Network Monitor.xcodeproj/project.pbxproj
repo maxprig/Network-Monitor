@@ -13,6 +13,7 @@
 		572B92631AB4C1B300474F1A /* online.gif in Resources */ = {isa = PBXBuildFile; fileRef = 572B92611AB4C1B300474F1A /* online.gif */; };
 		57407F7E1AB4BD6E004DE25A /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 57407F7D1AB4BD6E004DE25A /* Group.m */; };
 		57407F811AB4BD6F004DE25A /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57407F801AB4BD6F004DE25A /* HostList.m */; };
+		57948F071ABF32E10065D13D /* OnlineList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57948F061ABF32E10065D13D /* OnlineList.m */; };
 		57A9D8651A9E606F0007BC18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A9D8641A9E606F0007BC18 /* CFNetwork.framework */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
@@ -52,6 +53,8 @@
 		57407F7D1AB4BD6E004DE25A /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = CoreData/Group.m; sourceTree = "<group>"; };
 		57407F7F1AB4BD6F004DE25A /* HostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostList.h; path = CoreData/HostList.h; sourceTree = "<group>"; };
 		57407F801AB4BD6F004DE25A /* HostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostList.m; path = CoreData/HostList.m; sourceTree = "<group>"; };
+		57948F051ABF32E10065D13D /* OnlineList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineList.h; sourceTree = "<group>"; };
+		57948F061ABF32E10065D13D /* OnlineList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineList.m; sourceTree = "<group>"; };
 		57A9D8641A9E606F0007BC18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 		57CC6A061A5BE3AC00C427B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				57948F051ABF32E10065D13D /* OnlineList.h */,
+				57948F061ABF32E10065D13D /* OnlineList.m */,
 				57407F7F1AB4BD6F004DE25A /* HostList.h */,
 				57407F801AB4BD6F004DE25A /* HostList.m */,
 				57407F7C1AB4BD6E004DE25A /* Group.h */,
@@ -362,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57948F071ABF32E10065D13D /* OnlineList.m in Sources */,
 				57407F7E1AB4BD6E004DE25A /* Group.m in Sources */,
 				57F541441AADAB3E005622CB /* MainTableView.m in Sources */,
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,

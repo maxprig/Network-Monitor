@@ -114,7 +114,7 @@
 - (IBAction)clearDataBase:(NSMenuItem *)sender {
     NSManagedObjectContext *context = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
-    NSArray *arr = @[@"HostList", @"Group"];
+    NSArray *arr = @[@"HostList", @"Group", @"OnlineList"];
     for (NSString *obj in arr) {
         NSEntityDescription *entity = [NSEntityDescription entityForName:obj inManagedObjectContext:context];
         [fetchRequest setEntity:entity];
