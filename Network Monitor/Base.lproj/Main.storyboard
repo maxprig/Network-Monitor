@@ -21,7 +21,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="chG-dQ-NTe" kind="show" id="OIp-A7-DGl"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -606,6 +610,65 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="xGF-Vz-8TA">
+            <objects>
+                <viewController title="Settings" id="chG-dQ-NTe" customClass="SettingsVC" sceneMemberID="viewController">
+                    <view key="view" id="X0W-4M-8eg">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="168"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="906-Rw-YBL">
+                                <rect key="frame" x="18" y="132" width="414" height="18"/>
+                                <buttonCell key="cell" type="check" title="Контролировать соединение с интернет?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="VvO-m1-efV">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="controllCheckBox:" target="chG-dQ-NTe" id="rQ7-IL-I34"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OM4-e1-kh7">
+                                <rect key="frame" x="18" y="91" width="414" height="18"/>
+                                <buttonCell key="cell" type="check" title="Вести запись в лог?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="551-Lq-PmM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="writingLogCheckBox:" target="chG-dQ-NTe" id="AXO-mP-MhG"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bp2-Ae-Gvn">
+                                <rect key="frame" x="20" y="58" width="410" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Папка для записи лога" drawsBackground="YES" id="IPm-fY-ZbX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hsj-ka-Wxk">
+                                <rect key="frame" x="175" y="13" width="100" height="32"/>
+                                <buttonCell key="cell" type="push" title="Записать" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vuX-lw-Z2H">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveButton:" target="chG-dQ-NTe" id="F9E-Te-Sr2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="controllInternet" destination="906-Rw-YBL" id="jB1-IK-lBJ"/>
+                        <outlet property="logPath" destination="Bp2-Ae-Gvn" id="hnE-Dk-Dvj"/>
+                        <outlet property="writingLog" destination="OM4-e1-kh7" id="Rpx-8z-7tA"/>
+                        <outlet property="writingLogCheckBox" destination="X0W-4M-8eg" id="a1Q-XR-Qxh"/>
+                    </connections>
+                </viewController>
+                <customObject id="aaW-Ay-7fP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-630" y="243"/>
+        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -622,12 +685,12 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="81" y="300"/>
         </scene>
-        <!--Add Group View Controller-->
+        <!--Add Group-->
         <scene sceneID="kEZ-ms-CAc">
             <objects>
-                <viewController id="cm4-sy-EsQ" customClass="AddGroupViewController" sceneMemberID="viewController">
+                <viewController title="Add Group" id="cm4-sy-EsQ" customClass="AddGroupViewController" sceneMemberID="viewController">
                     <view key="view" id="sxg-cp-WAR">
                         <rect key="frame" x="0.0" y="0.0" width="332" height="116"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -666,12 +729,12 @@
                 </viewController>
                 <customObject id="XLy-9Z-ct2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="5"/>
+            <point key="canvasLocation" x="1131" y="0.0"/>
         </scene>
-        <!--Add Host View Controller-->
+        <!--Add Host-->
         <scene sceneID="zpH-uC-tpU">
             <objects>
-                <viewController id="MLK-hP-mkt" customClass="AddHostViewController" sceneMemberID="viewController">
+                <viewController title="Add Host" id="MLK-hP-mkt" customClass="AddHostViewController" sceneMemberID="viewController">
                     <view key="view" id="Mu8-ie-Ool">
                         <rect key="frame" x="0.0" y="0.0" width="332" height="155"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -737,7 +800,7 @@
                 </viewController>
                 <customObject id="Ng3-Sh-QC3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="307.5"/>
+            <point key="canvasLocation" x="1131" y="242.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QpJ-mq-dlf">
@@ -755,51 +818,23 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1285.5" y="878.5"/>
+            <point key="canvasLocation" x="2159.5" y="720.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Network Monitor-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Network Monitor" id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="793" height="472"/>
+                        <rect key="frame" x="0.0" y="0.0" width="713" height="472"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RAS-Ay-Pl8">
-                                <rect key="frame" x="713" y="424" width="86" height="32"/>
-                                <buttonCell key="cell" type="push" title="Запуск" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dcm-Zc-3ER">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="startButton:" target="XfG-lQ-9wD" id="trm-Rl-ci0"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-Zz-qQI">
-                                <rect key="frame" x="713" y="385" width="86" height="32"/>
-                                <buttonCell key="cell" type="push" title="Стоп" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XZX-DH-H1T">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="stopButton:" target="XfG-lQ-9wD" id="blc-dF-k3J"/>
-                                </connections>
-                            </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGL-2J-Euf">
                                 <rect key="frame" x="20" y="20" width="673" height="80"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="В базе нет записей" drawsBackground="YES" id="YH8-dv-WKJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNc-pR-VBj">
-                                <rect key="frame" x="717" y="351" width="78" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="eEJ-fP-yoq">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <scrollView identifier="myTable" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="57" horizontalPageScroll="10" verticalLineScroll="57" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imT-Bt-NQK">
@@ -884,12 +919,11 @@
                     </view>
                     <connections>
                         <outlet property="console" destination="SGL-2J-Euf" id="epD-Pw-qkA"/>
-                        <outlet property="statusLabel" destination="DNc-pR-VBj" id="Prf-Tg-97p"/>
                         <outlet property="tableView" destination="Fza-o6-zFA" id="5vu-Xb-xSC"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="265.5" y="779"/>
+            <point key="canvasLocation" x="231.5" y="829"/>
         </scene>
     </scenes>
     <resources>

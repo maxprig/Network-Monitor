@@ -26,6 +26,8 @@
 		57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A081A5BE64500C427B1 /* HostClaim.m */; };
 		57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */; };
 		57D3BC4F1AC8037200DBEB5A /* Network-Utility-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57D3BC4E1AC8037200DBEB5A /* Network-Utility-icon.png */; };
+		57D3BC551AC8736600DBEB5A /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D3BC541AC8736600DBEB5A /* SettingsVC.m */; };
+		57D3BC581AC8754900DBEB5A /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D3BC571AC8754900DBEB5A /* Settings.m */; };
 		57F541441AADAB3E005622CB /* MainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F541431AADAB3E005622CB /* MainTableView.m */; };
 		57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5417A1AAE00A7005622CB /* CustomCell.m */; };
 		A5852D3461C217C02151464B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9507101284463A61B0D4C225 /* libPods.a */; };
@@ -76,6 +78,10 @@
 		57CC6A0A1A5BE6DE00C427B1 /* HostObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostObject.h; sourceTree = "<group>"; };
 		57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostObject.m; sourceTree = "<group>"; };
 		57D3BC4E1AC8037200DBEB5A /* Network-Utility-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Network-Utility-icon.png"; path = "icons/Network-Utility-icon.png"; sourceTree = "<group>"; };
+		57D3BC531AC8736600DBEB5A /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
+		57D3BC541AC8736600DBEB5A /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
+		57D3BC561AC8754900DBEB5A /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = CoreData/Settings.h; sourceTree = "<group>"; };
+		57D3BC571AC8754900DBEB5A /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = CoreData/Settings.m; sourceTree = "<group>"; };
 		57F541421AADAB3E005622CB /* MainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableView.h; sourceTree = "<group>"; };
 		57F541431AADAB3E005622CB /* MainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableView.m; sourceTree = "<group>"; };
 		57F541791AAE00A7005622CB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -169,6 +175,8 @@
 				57CC6A011A5BE28F00C427B1 /* AddHostViewController.m */,
 				57CC69E71A5BE1C400C427B1 /* Images.xcassets */,
 				57CC69E91A5BE1C500C427B1 /* Main.storyboard */,
+				57D3BC531AC8736600DBEB5A /* SettingsVC.h */,
+				57D3BC541AC8736600DBEB5A /* SettingsVC.m */,
 				5729E9811ABE09E300FE6785 /* GraphView.h */,
 				5729E9821ABE09E300FE6785 /* GraphView.m */,
 				57F541791AAE00A7005622CB /* CustomCell.h */,
@@ -211,6 +219,8 @@
 		57CC6A061A5BE3AC00C427B1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				57D3BC561AC8754900DBEB5A /* Settings.h */,
+				57D3BC571AC8754900DBEB5A /* Settings.m */,
 				57948F051ABF32E10065D13D /* OnlineList.h */,
 				57948F061ABF32E10065D13D /* OnlineList.m */,
 				57407F7F1AB4BD6F004DE25A /* HostList.h */,
@@ -373,11 +383,13 @@
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
 				57407F811AB4BD6F004DE25A /* HostList.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
+				57D3BC581AC8754900DBEB5A /* Settings.m in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
 				57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */,
 				570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */,
 				57CC6A091A5BE64500C427B1 /* HostClaim.m in Sources */,
 				57CC6A021A5BE28F00C427B1 /* AddHostViewController.m in Sources */,
+				57D3BC551AC8736600DBEB5A /* SettingsVC.m in Sources */,
 				5729E9831ABE09E300FE6785 /* GraphView.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
 				57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */,

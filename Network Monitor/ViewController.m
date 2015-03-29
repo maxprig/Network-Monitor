@@ -182,7 +182,7 @@ NSMutableArray *hosts;
                 NSDictionary *group = [offline lastObject];
                 
                 
-                NSString *message = [NSString stringWithFormat:@"Потеряно соединение с группой '%@'.", [group objectForKey:@"Group"]];
+                NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
                 
                 NSAlert *alert = [[NSAlert alloc] init];
                 [alert addButtonWithTitle:@"OK"];
