@@ -11,15 +11,20 @@
 #import "HostList.h"
 #import "Group.h"
 #import "OnlineList.h"
+#import "CustomCell.h"
 
-
+NSMutableArray *hosts;
 @implementation ViewController
+
 @synthesize scan;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tableView.delegate = self;
+    tableView.dataSource = self;
     // Do any additional setup after loading the view.
     [self startProgress];
+    hosts = [NSMutableArray new];
     
     
 }
@@ -60,6 +65,8 @@
 -(void)doScaning{
   dispatch_async(dispatch_get_global_queue(0, 0), ^{
       while (scan) {
+          [hosts removeAllObjects];
+          
           _console.stringValue = @"Начало сканирования.";
           sleep(3);
           NSArray *myHosts = [self dataFromCoreData]; //Получаем все хосты.
@@ -113,14 +120,28 @@
               if ([host hostStatus]) {
                   _console.stringValue = [NSString stringWithFormat:@" Получен ответ от %@ из группы '%@'. Порт №%@ \n Хост доступен. ", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
                   [online addObject:host];
-                  [self saveInfoAboutHostIntoDataBase:hostInfo online:YES]; //Записываем хост в табличку.
+                  
+                  NSDictionary *dict = @{
+                                         @"Address": [hostInfo objectForKey:@"Address"],
+                                         @"Group" : [hostInfo objectForKey:@"GroupName"],
+                                         @"Port" :  [hostInfo objectForKey:@"Port"],
+                                         @"Status": @"Online"
+                                         };
+                  [hosts addObject:dict];
                   sleep(3);
               }
               else
               {
                   _console.stringValue = [NSString stringWithFormat:@" Нет ответа от %@ из группы '%@'. Порт №%@ \n Хост или сервис недоступен.", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
                   [offline addObject:host];
-                  [self saveInfoAboutHostIntoDataBase:hostInfo online:NO]; //Записываем хост в табличку.
+                  
+                  NSDictionary *dict = @{
+                                         @"Address": [hostInfo objectForKey:@"Address"],
+                                         @"Group" : [hostInfo objectForKey:@"GroupName"],
+                                         @"Port" :  [hostInfo objectForKey:@"Port"],
+                                         @"Status": @"Offline"
+                                         };
+                  [hosts addObject:dict];
                   sleep(3);
               }
               
@@ -131,6 +152,7 @@
           
           NSLog(@"Online - %lu \n Offline - %lu", (unsigned long)[online count], (unsigned long)[offline count]);
           _console.stringValue = [NSString stringWithFormat:@" В сети - %lu хостов. \n Не в сети - %lu хостов. \n Ожидание.", (unsigned long)[online count], (unsigned long)[offline count]];
+          [tableView reloadData];
           sleep(60);
       }
       
@@ -140,7 +162,33 @@
     }
                 
 
+#pragma mark -TableView DataSource and Delegate-
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    
+    return [hosts count];
+}
 
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+        NSString *ident = @"hostCell";
+    CustomCell *cell = [tableView makeViewWithIdentifier:ident owner:self];
+    cell.rowSizeStyle = NSTableViewRowSizeStyleCustom;
+    NSDictionary *dict = [hosts objectAtIndex:row];
+    
+    if (cell) {
+        cell.ipAddressCell.stringValue = [dict objectForKey:@"Address"];
+        cell.groupCell.stringValue = [dict objectForKey:@"Group"];
+        if ([[dict objectForKey:@"Status"] isEqualToString:@"Online"]) {
+            [cell.cellImage setImage:[NSImage imageNamed:@"online.gif"]];
+        }else{
+            [cell.cellImage setImage:[NSImage imageNamed:@"offline.png"]];
+        }
+    }
+    return cell;
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    return 60.0;
+}
 
 #pragma mark -Методы работы с CoreData-
 //Контекст

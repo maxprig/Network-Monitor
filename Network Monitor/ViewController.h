@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MainTableView.h"
-#import <CPTPlot.h>
 
-@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, CPTPlotDataSource>
+@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>{
+    IBOutlet NSTableView *tableView;
+}
 
 @property (assign) BOOL scan;
 

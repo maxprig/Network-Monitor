@@ -27,7 +27,6 @@
 		57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */; };
 		57F541441AADAB3E005622CB /* MainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F541431AADAB3E005622CB /* MainTableView.m */; };
 		57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5417A1AAE00A7005622CB /* CustomCell.m */; };
-		57F5417D1AAE05A1005622CB /* girl.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57F5417C1AAE05A1005622CB /* girl.gif */; };
 		A5852D3461C217C02151464B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9507101284463A61B0D4C225 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +78,6 @@
 		57F541431AADAB3E005622CB /* MainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableView.m; sourceTree = "<group>"; };
 		57F541791AAE00A7005622CB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		57F5417A1AAE00A7005622CB /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
-		57F5417C1AAE05A1005622CB /* girl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = girl.gif; path = ../../../Pictures/girl.gif; sourceTree = "<group>"; };
 		61AEAA39B84310869A3A0DF7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9507101284463A61B0D4C225 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -170,7 +168,6 @@
 				57CC69E91A5BE1C500C427B1 /* Main.storyboard */,
 				5729E9811ABE09E300FE6785 /* GraphView.h */,
 				5729E9821ABE09E300FE6785 /* GraphView.m */,
-				57F5417C1AAE05A1005622CB /* girl.gif */,
 				57F541791AAE00A7005622CB /* CustomCell.h */,
 				57F5417A1AAE00A7005622CB /* CustomCell.m */,
 				57CC69E41A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld */,
@@ -314,7 +311,6 @@
 			files = (
 				57CC69E81A5BE1C400C427B1 /* Images.xcassets in Resources */,
 				572B92621AB4C1B300474F1A /* offline.png in Resources */,
-				57F5417D1AAE05A1005622CB /* girl.gif in Resources */,
 				572B92631AB4C1B300474F1A /* online.gif in Resources */,
 				57CC69EB1A5BE1C500C427B1 /* Main.storyboard in Resources */,
 			);
@@ -457,6 +453,7 @@
 		};
 		57CC69F91A5BE1C500C427B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CE96D12EAE652892DB2407F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -516,6 +513,7 @@
 		};
 		57CC69FE1A5BE1C500C427B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61AEAA39B84310869A3A0DF7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -536,6 +534,7 @@
 		};
 		57CC69FF1A5BE1C500C427B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CE96D12EAE652892DB2407F /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
