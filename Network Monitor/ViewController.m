@@ -63,17 +63,22 @@ NSMutableArray *hosts;
         Settings *settings = [[self settingsFromCoreData] lastObject];
         if ([settings.controllInternet isEqualToNumber:@1]) {
             while (scan) {
-                HostObject *host = [[HostObject alloc]initWithAddress:@"134.170.188.221" port:@80];  //microsoft.com
-                [host doConnection];
-                if (![host hostStatus]) {
-                    NSAlert *alert = [[NSAlert alloc] init];
-                    [alert addButtonWithTitle:@"OK"];
-                    [alert setMessageText:@"Потеряно соединение с интернет!"];
-                    [alert setAlertStyle:NSInformationalAlertStyle];
-                    
-                    [alert runModal];
+                @try {
+                    HostObject *host = [[HostObject alloc]initWithAddress:@"134.170.188.221" port:@80];  //microsoft.com
+                    [host doConnection];
+                    if (![host hostStatus]) {
+                        NSAlert *alert = [[NSAlert alloc] init];
+                        [alert addButtonWithTitle:@"OK"];
+                        [alert setMessageText:@"Потеряно соединение с интернет!"];
+                        [alert setAlertStyle:NSInformationalAlertStyle];
+                        
+                        [alert runModal];
+                    }
+                    sleep(5);
                 }
-                sleep(5);
+                @catch (NSException *exception) {
+                    NSLog(@":c");
+                }
             }
         }
     });
