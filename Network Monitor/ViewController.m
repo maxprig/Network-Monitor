@@ -39,15 +39,11 @@ NSMutableArray *hosts;
     if (!scan) {
         scan = true;
         if([[self dataFromCoreData] count]!=0){
-            self.statusLabel.stringValue = @"В работе";
-            self.statusLabel.textColor = [NSColor greenColor];
             [self doScaning];
         }
         else
         {
             scan = false;
-            self.statusLabel.stringValue = @"Остановлена";
-            self.statusLabel.textColor = [NSColor redColor];
         }
     }
 }
@@ -55,8 +51,7 @@ NSMutableArray *hosts;
 - (IBAction)stopButton:(NSButton *)sender {
     if (scan) {
     scan = false;
-        self.statusLabel.stringValue = @"Остановлена";
-        self.statusLabel.textColor = [NSColor redColor];
+        _console.stringValue = @"Мониторинг остановлен.";
     }
 }
 
@@ -107,9 +102,6 @@ NSMutableArray *hosts;
           //=============================================================================================================
           //Теперь, когда собрана вся информация, можно приступать к сканированию.
           
-          //Для начала очистим табличку с данными о хостах.
-          [self clearOnlineList];
-          
           for (NSDictionary *hostInfo in hostsForScan){
               HostObject *host = [[HostObject alloc]initWithAddress:[hostInfo objectForKey:@"Address"] port:[hostInfo objectForKey:@"Port"]];
               _console.stringValue = [NSString stringWithFormat:@" Попытка соединения с %@ из группы '%@'. Порт №%@.", [hostInfo objectForKey:@"Address"], [hostInfo objectForKey:@"GroupName"], [hostInfo objectForKey:@"Port"]];
@@ -152,6 +144,7 @@ NSMutableArray *hosts;
           
           NSLog(@"Online - %lu \n Offline - %lu", (unsigned long)[online count], (unsigned long)[offline count]);
           _console.stringValue = [NSString stringWithFormat:@" В сети - %lu хостов. \n Не в сети - %lu хостов. \n Ожидание.", (unsigned long)[online count], (unsigned long)[offline count]];
+          [self monitoringGroups:hosts];
           [tableView reloadData];
           sleep(60);
       }
@@ -161,6 +154,48 @@ NSMutableArray *hosts;
     
     }
                 
+
+#pragma mark -Monitoring Method-
+-(void)monitoringGroups:(NSArray*)hosts{
+    NSArray *groups = [self takeGroupsFromCoreData]; //Получаем группы
+    for (Group *group in groups){
+        NSString *nameGroup = group.name;
+        NSInteger groupCounter = [group.hostList count];
+        
+        NSMutableArray *online = [NSMutableArray new];
+        NSMutableArray *offline = [NSMutableArray new];
+        
+        for (NSDictionary *hostsDict in hosts){
+            NSLog(@"%@", hostsDict);
+            if ([[hostsDict objectForKey:@"Group"] isEqualToString:nameGroup]) {
+                NSLog(@"%@", [hostsDict objectForKey:@"Status"] );
+                if ([[hostsDict objectForKey:@"Status"] isEqualToString:@"Online"]) {
+                    [online addObject:hostsDict];
+                }
+                else
+                {
+                    [offline addObject:hostsDict];
+                }
+            }
+        }
+            if ([offline count] == groupCounter) {
+                NSString *message = @"Проблемы с группой! :c";
+                
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert addButtonWithTitle:@"OK"];
+                [alert setMessageText:message];
+                [alert setAlertStyle:NSInformationalAlertStyle];
+              //  [alert setAlertStyle:NSCriticalAlertStyle];
+                
+                [alert runModal];
+               
+                
+            }
+                
+        }
+    }
+    
+
 
 #pragma mark -TableView DataSource and Delegate-
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -201,41 +236,41 @@ NSMutableArray *hosts;
     return context;
 }
 
-//Метод очистки Onlinelist
--(void)clearOnlineList{
-    NSManagedObjectContext *context = [self takeContext];
-    if (![[self onlineListFromCoreData]count]) {
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
-        [fetchRequest setEntity:entity];
-        NSArray *array = [context executeFetchRequest:fetchRequest error:nil];
-        if ([array count]!=0) {
-            for (NSManagedObject *object in array) {
-                [context deleteObject:object];
-            }
-        }
-    }
-}
-
-//Метод записи в OnlineList
--(void)saveInfoAboutHostIntoDataBase:(NSDictionary*)object online:(BOOL)online{
-    NSManagedObjectContext *context = [self takeContext];
-    OnlineList *addIntoList = [NSEntityDescription insertNewObjectForEntityForName:@"OnlineList" inManagedObjectContext:context];
-    if (addIntoList) {
-        addIntoList.address = [object valueForKey:@"Address"];
-        addIntoList.port = [object valueForKey:@"Port"];
-        addIntoList.groupName = [object valueForKey:@"GroupName"];
-        addIntoList.groupId = [object valueForKey:@"GroupID"];
-        
-        if (online) {
-            addIntoList.online = @1;
-        }
-        else{
-            addIntoList.online = @0;
-        }
-    }
-    
-}
+////Метод очистки Onlinelist
+//-(void)clearOnlineList{
+//    NSManagedObjectContext *context = [self takeContext];
+//    if (![[self onlineListFromCoreData]count]) {
+//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
+//        [fetchRequest setEntity:entity];
+//        NSArray *array = [context executeFetchRequest:fetchRequest error:nil];
+//        if ([array count]!=0) {
+//            for (NSManagedObject *object in array) {
+//                [context deleteObject:object];
+//            }
+//        }
+//    }
+//}
+//
+////Метод записи в OnlineList
+//-(void)saveInfoAboutHostIntoDataBase:(NSDictionary*)object online:(BOOL)online{
+//    NSManagedObjectContext *context = [self takeContext];
+//    OnlineList *addIntoList = [NSEntityDescription insertNewObjectForEntityForName:@"OnlineList" inManagedObjectContext:context];
+//    if (addIntoList) {
+//        addIntoList.address = [object valueForKey:@"Address"];
+//        addIntoList.port = [object valueForKey:@"Port"];
+//        addIntoList.groupName = [object valueForKey:@"GroupName"];
+//        addIntoList.groupId = [object valueForKey:@"GroupID"];
+//        
+//        if (online) {
+//            addIntoList.online = @1;
+//        }
+//        else{
+//            addIntoList.online = @0;
+//        }
+//    }
+//    
+//}
 
 //Получение данных из CoreData
 -(NSArray*)dataFromCoreData{
