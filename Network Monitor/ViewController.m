@@ -144,8 +144,8 @@ NSMutableArray *hosts;
           
           NSLog(@"Online - %lu \n Offline - %lu", (unsigned long)[online count], (unsigned long)[offline count]);
           _console.stringValue = [NSString stringWithFormat:@" В сети - %lu хостов. \n Не в сети - %lu хостов. \n Ожидание.", (unsigned long)[online count], (unsigned long)[offline count]];
-          [self monitoringGroups:hosts];
           [tableView reloadData];
+          [self monitoringGroups:hosts];
           sleep(60);
       }
       
