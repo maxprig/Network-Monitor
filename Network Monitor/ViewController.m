@@ -13,8 +13,11 @@
 #import "OnlineList.h"
 #import "CustomCell.h"
 #import "Settings.h"
+#import "LogHandler.h"
 
 NSMutableArray *hosts;
+NSMutableArray *logs;
+
 @implementation ViewController
 
 @synthesize scan;
@@ -26,6 +29,7 @@ NSMutableArray *hosts;
     // Do any additional setup after loading the view.
     [self startProgress];
     hosts = [NSMutableArray new];
+    logs = [NSMutableArray new];
     
     
 }
@@ -40,7 +44,7 @@ NSMutableArray *hosts;
     if (!scan) {
         scan = true;
         if([[self dataFromCoreData] count]!=0){
-            [self controlInternetConnection];
+//            [self controlInternetConnection];
             [self doScaning];
         }
         else
@@ -59,11 +63,11 @@ NSMutableArray *hosts;
 
 //Метод проверки соединения с интернетом.
 -(void)controlInternetConnection{
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         Settings *settings = [[self settingsFromCoreData] lastObject];
         if ([settings.controllInternet isEqualToNumber:@1]) {
-            while (scan) {
                 @try {
+                    _console.stringValue = @"Проверка соединения с интернет.";
                     HostObject *host = [[HostObject alloc]initWithAddress:@"134.170.188.221" port:@80];  //microsoft.com
                     [host doConnection];
                     if (![host hostStatus]) {
@@ -71,8 +75,14 @@ NSMutableArray *hosts;
                         [alert addButtonWithTitle:@"OK"];
                         [alert setMessageText:@"Потеряно соединение с интернет!"];
                         [alert setAlertStyle:NSInformationalAlertStyle];
-                        
+                        [logs addObject:@"Потеряно соединение с интернет."];
                         [alert runModal];
+                        [self writeLogInFile];
+                    }
+                    else
+                    {
+                        _console.stringValue = @"Интернет доступен.";
+                        [logs addObject:@"Интернет доступен."];
                     }
                     sleep(5);
                 }
@@ -80,8 +90,7 @@ NSMutableArray *hosts;
                     NSLog(@":c");
                 }
             }
-        }
-    });
+//    });
 }
 
 //Свойство hostStatus типа BOOL говорит нам о доступности хоста.
@@ -148,6 +157,7 @@ NSMutableArray *hosts;
                                          @"Status": @"Online"
                                          };
                   [hosts addObject:dict];
+                  [logs addObject:_console.stringValue];
                   sleep(3);
               }
               else
@@ -162,6 +172,7 @@ NSMutableArray *hosts;
                                          @"Status": @"Offline"
                                          };
                   [hosts addObject:dict];
+                  [logs addObject:_console.stringValue];
                   sleep(3);
               }
               
@@ -170,9 +181,13 @@ NSMutableArray *hosts;
           //=============================================================================================================
           //Производим запись в табличку OnlineList информации о хостах.
           
+          [self controlInternetConnection];
           NSLog(@"Online - %lu \n Offline - %lu", (unsigned long)[online count], (unsigned long)[offline count]);
           _console.stringValue = [NSString stringWithFormat:@" В сети - %lu хостов. \n Не в сети - %lu хостов. \n Ожидание.", (unsigned long)[online count], (unsigned long)[offline count]];
           [tableView reloadData];
+          Settings *settings = [[self settingsFromCoreData]lastObject];
+          NSLog(@"%@", logs);
+          [self writeLogInFile];
           [self monitoringGroups:hosts];
           sleep(60);
       }
@@ -182,6 +197,28 @@ NSMutableArray *hosts;
     
     }
                 
+-(void)writeLogInFile{
+    Settings *settings = [[self settingsFromCoreData]lastObject];
+    if (settings.logPath) {
+        NSString *strLog = @"";
+        NSLog(@"%@", logs);
+        
+        NSDate *date = [NSDate new];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy.MM.dd hh.mm"];
+        
+        for (NSString *str in logs){
+            strLog = [NSString stringWithFormat:@"%@ \n %@: %@", strLog, [formatter stringFromDate:date], str];
+        }
+        
+        
+        NSDateFormatter *pathFormatter = [[NSDateFormatter alloc] init];
+        [pathFormatter setDateFormat:@"yyyy.MM.dd"];
+        
+        NSData *data =[strLog dataUsingEncoding:NSUTF8StringEncoding];
+        [data writeToFile:[NSString stringWithFormat:@"%@%@.txt", settings.logPath, [pathFormatter stringFromDate:date]] atomically:YES];
+    }
+}
 
 #pragma mark -Monitoring Method-
 -(void)monitoringGroups:(NSArray*)hosts{
