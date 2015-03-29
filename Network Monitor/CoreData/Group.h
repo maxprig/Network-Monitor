@@ -2,7 +2,7 @@
 //  Group.h
 //  Network Monitor
 //
-//  Created by Максим on 14.03.15.
+//  Created by Максим on 30.03.15.
 //  Copyright (c) 2015 Prigozhenkov Maxim. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * groupID;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * scriptPath;
 @property (nonatomic, retain) NSSet *hostList;
 @end
 

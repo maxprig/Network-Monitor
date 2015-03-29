@@ -51,7 +51,7 @@ NSDictionary *dict;
     }
 }
 
-#pragma mark -CoreData Methids-
+#pragma mark -CoreData Methods-
 //Получение групп.
 -(NSArray*)dataFromCoreData{
     NSManagedObjectContext *context = [self takeContext];

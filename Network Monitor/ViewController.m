@@ -125,6 +125,7 @@ NSMutableArray *logs;
                   for (Group *group in hst.groups){
                       [aboutHost setObject:group.name forKey:@"GroupName"];
                       [aboutHost setObject:group.groupID forKey:@"GroupID"];
+                      [aboutHost setObject:group.scriptPath forKeyedSubscript:@"Path"];
                   }
               }
               else {
@@ -154,6 +155,7 @@ NSMutableArray *logs;
                                          @"Address": [hostInfo objectForKey:@"Address"],
                                          @"Group" : [hostInfo objectForKey:@"GroupName"],
                                          @"Port" :  [hostInfo objectForKey:@"Port"],
+                                         @"Path": [hostInfo objectForKey:@"Path"],
                                          @"Status": @"Online"
                                          };
                   [hosts addObject:dict];
@@ -169,6 +171,7 @@ NSMutableArray *logs;
                                          @"Address": [hostInfo objectForKey:@"Address"],
                                          @"Group" : [hostInfo objectForKey:@"GroupName"],
                                          @"Port" :  [hostInfo objectForKey:@"Port"],
+                                         @"Path": [hostInfo objectForKey:@"Path"],
                                          @"Status": @"Offline"
                                          };
                   [hosts addObject:dict];
@@ -248,6 +251,8 @@ NSMutableArray *logs;
                 
                 
                 NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
+                
+                //Тут надо реализовать запуск скрипта.
                 
                 NSAlert *alert = [[NSAlert alloc] init];
                 [alert addButtonWithTitle:@"OK"];

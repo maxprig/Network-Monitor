@@ -11,5 +11,6 @@
 @interface AddGroupViewController : NSViewController
 @property (weak) IBOutlet NSTextField *insertGroupName;
 - (IBAction)saveButton:(NSButton *)sender;
+@property (weak) IBOutlet NSTextField *scriptPath;
 
 @end

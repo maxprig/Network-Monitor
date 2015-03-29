@@ -29,6 +29,9 @@
     if (new) {
         new.name = _insertGroupName.stringValue;
         new.groupID = [NSNumber numberWithInteger:[array count]+1];
+        if (_scriptPath) {
+            new.scriptPath = _scriptPath.stringValue;
+        }
     }
     
     NSError *saveError = nil;
