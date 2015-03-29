@@ -179,7 +179,10 @@ NSMutableArray *hosts;
             }
         }
             if ([offline count] == groupCounter) {
-                NSString *message = @"Проблемы с группой! :c";
+                NSDictionary *group = [offline lastObject];
+                
+                
+                NSString *message = [NSString stringWithFormat:@"Потеряно соединение с группой '%@'.", [group objectForKey:@"Group"]];
                 
                 NSAlert *alert = [[NSAlert alloc] init];
                 [alert addButtonWithTitle:@"OK"];
