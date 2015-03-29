@@ -12,6 +12,7 @@
 #import "Group.h"
 #import "OnlineList.h"
 #import "CustomCell.h"
+#import "Settings.h"
 
 NSMutableArray *hosts;
 @implementation ViewController
@@ -39,6 +40,7 @@ NSMutableArray *hosts;
     if (!scan) {
         scan = true;
         if([[self dataFromCoreData] count]!=0){
+            [self controlInternetConnection];
             [self doScaning];
         }
         else
@@ -55,6 +57,27 @@ NSMutableArray *hosts;
     }
 }
 
+//Метод проверки соединения с интернетом.
+-(void)controlInternetConnection{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        Settings *settings = [[self settingsFromCoreData] lastObject];
+        if ([settings.controllInternet isEqualToNumber:@1]) {
+            while (scan) {
+                HostObject *host = [[HostObject alloc]initWithAddress:@"134.170.188.221" port:@80];  //microsoft.com
+                [host doConnection];
+                if (![host hostStatus]) {
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert addButtonWithTitle:@"OK"];
+                    [alert setMessageText:@"Потеряно соединение с интернет!"];
+                    [alert setAlertStyle:NSInformationalAlertStyle];
+                    
+                    [alert runModal];
+                }
+                sleep(5);
+            }
+        }
+    });
+}
 
 //Свойство hostStatus типа BOOL говорит нам о доступности хоста.
 -(void)doScaning{
@@ -239,42 +262,6 @@ NSMutableArray *hosts;
     return context;
 }
 
-////Метод очистки Onlinelist
-//-(void)clearOnlineList{
-//    NSManagedObjectContext *context = [self takeContext];
-//    if (![[self onlineListFromCoreData]count]) {
-//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init]; //Определяем запрос
-//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
-//        [fetchRequest setEntity:entity];
-//        NSArray *array = [context executeFetchRequest:fetchRequest error:nil];
-//        if ([array count]!=0) {
-//            for (NSManagedObject *object in array) {
-//                [context deleteObject:object];
-//            }
-//        }
-//    }
-//}
-//
-////Метод записи в OnlineList
-//-(void)saveInfoAboutHostIntoDataBase:(NSDictionary*)object online:(BOOL)online{
-//    NSManagedObjectContext *context = [self takeContext];
-//    OnlineList *addIntoList = [NSEntityDescription insertNewObjectForEntityForName:@"OnlineList" inManagedObjectContext:context];
-//    if (addIntoList) {
-//        addIntoList.address = [object valueForKey:@"Address"];
-//        addIntoList.port = [object valueForKey:@"Port"];
-//        addIntoList.groupName = [object valueForKey:@"GroupName"];
-//        addIntoList.groupId = [object valueForKey:@"GroupID"];
-//        
-//        if (online) {
-//            addIntoList.online = @1;
-//        }
-//        else{
-//            addIntoList.online = @0;
-//        }
-//    }
-//    
-//}
-
 //Получение данных из CoreData
 -(NSArray*)dataFromCoreData{
     NSManagedObjectContext *context = [self takeContext];
@@ -298,6 +285,15 @@ NSMutableArray *hosts;
     NSManagedObjectContext *context = [self takeContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"OnlineList" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    return [context executeFetchRequest:fetchRequest error:nil];
+}
+
+//Получение настроек
+-(NSArray*)settingsFromCoreData{
+    NSManagedObjectContext *context = [self takeContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Settings" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     return [context executeFetchRequest:fetchRequest error:nil];
 }
