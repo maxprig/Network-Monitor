@@ -155,7 +155,7 @@ NSMutableArray *logs;
                                          @"Address": [hostInfo objectForKey:@"Address"],
                                          @"Group" : [hostInfo objectForKey:@"GroupName"],
                                          @"Port" :  [hostInfo objectForKey:@"Port"],
-                                         @"Path": [hostInfo objectForKey:@"Path"],
+//                                         @"Path": [hostInfo objectForKey:@"Path"],
                                          @"Status": @"Online"
                                          };
                   [hosts addObject:dict];
@@ -171,7 +171,7 @@ NSMutableArray *logs;
                                          @"Address": [hostInfo objectForKey:@"Address"],
                                          @"Group" : [hostInfo objectForKey:@"GroupName"],
                                          @"Port" :  [hostInfo objectForKey:@"Port"],
-                                         @"Path": [hostInfo objectForKey:@"Path"],
+//                                         @"Path": [hostInfo objectForKey:@"Path"],
                                          @"Status": @"Offline"
                                          };
                   [hosts addObject:dict];
@@ -249,19 +249,20 @@ NSMutableArray *logs;
             if ([offline count] == groupCounter) {
                 NSDictionary *group = [offline lastObject];
                 
-                
-                NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
-                
-                //Тут надо реализовать запуск скрипта.
-                
-                NSAlert *alert = [[NSAlert alloc] init];
-                [alert addButtonWithTitle:@"OK"];
-                [alert setMessageText:message];
-                [alert setAlertStyle:NSInformationalAlertStyle];
-              //  [alert setAlertStyle:NSCriticalAlertStyle];
-                
-                [alert runModal];
-               
+               //Чтобы не выводилось сообщение, если группа нулевая.
+                if ([group objectForKey:@"Group"]) {
+                    NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
+                    
+                    //Тут надо реализовать запуск скрипта.
+                    
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert addButtonWithTitle:@"OK"];
+                    [alert setMessageText:message];
+                    [alert setAlertStyle:NSInformationalAlertStyle];
+                    //  [alert setAlertStyle:NSCriticalAlertStyle];
+                    
+                    [alert runModal];
+                }
                 
             }
                 

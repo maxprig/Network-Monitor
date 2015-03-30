@@ -51,6 +51,12 @@
                                                 <segue destination="cm4-sy-EsQ" kind="show" id="3Dc-uc-IO0"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Удалить хост" id="G1b-YL-JJL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="gLa-SO-QxX" kind="show" id="8iA-WV-5Kk"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Очистить базу" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="clearDataBase:" target="Voe-Tx-rLC" id="LiW-Yn-CIB"/>
@@ -143,6 +149,50 @@
                 <customObject id="aaW-Ay-7fP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-630" y="243"/>
+        </scene>
+        <!--Delete Host-->
+        <scene sceneID="hTc-E6-FIu">
+            <objects>
+                <viewController title="Delete Host" id="gLa-SO-QxX" customClass="DeleteHostVC" sceneMemberID="viewController">
+                    <view key="view" id="KPq-y7-sLO">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="112"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBM-Ey-SKt">
+                                <rect key="frame" x="66" y="63" width="367" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="fxz-Y2-ylI">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="oIV-id-ebO"/>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jX3-fn-GZV">
+                                <rect key="frame" x="18" y="68" width="44" height="19"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Хост:" id="hCf-o7-uCI">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfe-cu-DO1">
+                                <rect key="frame" x="179" y="18" width="93" height="32"/>
+                                <buttonCell key="cell" type="push" title="Удалить" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5dy-y8-3Yv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="pressDeleteButton:" target="gLa-SO-QxX" id="l5M-cJ-NBS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="hostChanger" destination="HBM-Ey-SKt" id="LoU-n7-pTq"/>
+                    </connections>
+                </viewController>
+                <customObject id="5Qp-fJ-Hmj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1116" y="215"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -393,7 +443,7 @@
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="7Fx-Kn-Dbl">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7Fx-Kn-Dbl">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>

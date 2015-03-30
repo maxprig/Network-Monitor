@@ -12,6 +12,7 @@
 		572B92621AB4C1B300474F1A /* offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 572B92601AB4C1B300474F1A /* offline.png */; };
 		572B92631AB4C1B300474F1A /* online.gif in Resources */ = {isa = PBXBuildFile; fileRef = 572B92611AB4C1B300474F1A /* online.gif */; };
 		57407F811AB4BD6F004DE25A /* HostList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57407F801AB4BD6F004DE25A /* HostList.m */; };
+		5784D7E11AC9BFF400C40871 /* DeleteHostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5784D7E01AC9BFF400C40871 /* DeleteHostVC.m */; };
 		5785B5E11AC8937F00FB0DA3 /* LogHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5785B5E01AC8937F00FB0DA3 /* LogHandler.m */; };
 		5785B5E71AC8B45200FB0DA3 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 5785B5E61AC8B45200FB0DA3 /* Group.m */; };
 		57948F071ABF32E10065D13D /* OnlineList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57948F061ABF32E10065D13D /* OnlineList.m */; };
@@ -54,6 +55,8 @@
 		572B92611AB4C1B300474F1A /* online.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = online.gif; path = icons/online.gif; sourceTree = "<group>"; };
 		57407F7F1AB4BD6F004DE25A /* HostList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostList.h; path = CoreData/HostList.h; sourceTree = "<group>"; };
 		57407F801AB4BD6F004DE25A /* HostList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostList.m; path = CoreData/HostList.m; sourceTree = "<group>"; };
+		5784D7DF1AC9BFF400C40871 /* DeleteHostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteHostVC.h; sourceTree = "<group>"; };
+		5784D7E01AC9BFF400C40871 /* DeleteHostVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteHostVC.m; sourceTree = "<group>"; };
 		5785B5DF1AC8937F00FB0DA3 /* LogHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHandler.h; sourceTree = "<group>"; };
 		5785B5E01AC8937F00FB0DA3 /* LogHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHandler.m; sourceTree = "<group>"; };
 		5785B5E51AC8B45200FB0DA3 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = CoreData/Group.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */,
 				57CC69E11A5BE1C400C427B1 /* ViewController.h */,
 				57CC69E21A5BE1C400C427B1 /* ViewController.m */,
+				5784D7DF1AC9BFF400C40871 /* DeleteHostVC.h */,
+				5784D7E01AC9BFF400C40871 /* DeleteHostVC.m */,
 				5785B5DF1AC8937F00FB0DA3 /* LogHandler.h */,
 				5785B5E01AC8937F00FB0DA3 /* LogHandler.m */,
 				57F541421AADAB3E005622CB /* MainTableView.h */,
@@ -399,6 +404,7 @@
 				5729E9831ABE09E300FE6785 /* GraphView.m in Sources */,
 				57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */,
 				57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */,
+				5784D7E11AC9BFF400C40871 /* DeleteHostVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
