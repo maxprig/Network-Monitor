@@ -96,11 +96,11 @@
             <objects>
                 <viewController title="Settings" id="chG-dQ-NTe" customClass="SettingsVC" sceneMemberID="viewController">
                     <view key="view" id="X0W-4M-8eg">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="168"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="214"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="906-Rw-YBL">
-                                <rect key="frame" x="18" y="132" width="414" height="18"/>
+                                <rect key="frame" x="18" y="178" width="414" height="18"/>
                                 <buttonCell key="cell" type="check" title="Контролировать соединение с интернет?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="VvO-m1-efV">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -110,7 +110,7 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OM4-e1-kh7">
-                                <rect key="frame" x="18" y="91" width="414" height="18"/>
+                                <rect key="frame" x="18" y="137" width="414" height="18"/>
                                 <buttonCell key="cell" type="check" title="Вести запись в лог?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="551-Lq-PmM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -137,18 +137,26 @@
                                     <action selector="saveButton:" target="chG-dQ-NTe" id="F9E-Te-Sr2"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAC-M3-qIa">
+                                <rect key="frame" x="18" y="98" width="193" height="18"/>
+                                <buttonCell key="cell" type="check" title="Уведомлять о проблемах?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7ec-vc-yd8">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="controllInternet" destination="906-Rw-YBL" id="jB1-IK-lBJ"/>
                         <outlet property="logPath" destination="Bp2-Ae-Gvn" id="hnE-Dk-Dvj"/>
+                        <outlet property="warning" destination="X0W-4M-8eg" id="An4-FF-VCh"/>
                         <outlet property="writingLog" destination="OM4-e1-kh7" id="Rpx-8z-7tA"/>
                         <outlet property="writingLogCheckBox" destination="X0W-4M-8eg" id="a1Q-XR-Qxh"/>
                     </connections>
                 </viewController>
                 <customObject id="aaW-Ay-7fP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-630" y="243"/>
+            <point key="canvasLocation" x="-630" y="266"/>
         </scene>
         <!--Delete Host-->
         <scene sceneID="hTc-E6-FIu">

@@ -216,7 +216,7 @@ NSMutableArray *logs;
         
         
         NSDateFormatter *pathFormatter = [[NSDateFormatter alloc] init];
-        [pathFormatter setDateFormat:@"yyyy.MM.dd"];
+        [pathFormatter setDateFormat:@"yyyy.MM.dd.hh.mm"];
         
         NSData *data =[strLog dataUsingEncoding:NSUTF8StringEncoding];
         [data writeToFile:[NSString stringWithFormat:@"%@%@.txt", settings.logPath, [pathFormatter stringFromDate:date]] atomically:YES];
@@ -250,7 +250,8 @@ NSMutableArray *logs;
                 NSDictionary *group = [offline lastObject];
                 
                //Чтобы не выводилось сообщение, если группа нулевая.
-                if ([group objectForKey:@"Group"]) {
+                Settings *settings = [self settingsFromCoreData];
+                if ([group objectForKey:@"Group"] || [settings.warning isEqualToNumber:@1]) {
                     NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
                     
                     //Тут надо реализовать запуск скрипта.

@@ -45,6 +45,9 @@
             _logPath.enabled = 1;
             _logPath.stringValue = settings.logPath;
         }
+        if ([settings.warning isEqualToNumber:@1]) {
+            _warning.state = 1;
+        }
     }
     else
     {
@@ -76,6 +79,7 @@
     if (settings) {
         settings.controllInternet = [NSNumber numberWithInteger:_controllInternet.state];
         settings.writingLog = [NSNumber numberWithInteger:_writingLog.state];
+        settings.warning = [NSNumber numberWithInteger:_warning.state];
         settings.logPath = _logPath.stringValue;
     }
     NSError *saveError = nil;

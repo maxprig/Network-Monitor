@@ -17,6 +17,7 @@
 		5785B5E71AC8B45200FB0DA3 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 5785B5E61AC8B45200FB0DA3 /* Group.m */; };
 		57948F071ABF32E10065D13D /* OnlineList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57948F061ABF32E10065D13D /* OnlineList.m */; };
 		57A9D8651A9E606F0007BC18 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A9D8641A9E606F0007BC18 /* CFNetwork.framework */; };
+		57C4D8A71ACAC48400F92001 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C4D8A61ACAC48400F92001 /* Settings.m */; };
 		57CC69DE1A5BE1C400C427B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DD1A5BE1C400C427B1 /* AppDelegate.m */; };
 		57CC69E01A5BE1C400C427B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69DF1A5BE1C400C427B1 /* main.m */; };
 		57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC69E21A5BE1C400C427B1 /* ViewController.m */; };
@@ -29,7 +30,6 @@
 		57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57CC6A0B1A5BE6DE00C427B1 /* HostObject.m */; };
 		57D3BC4F1AC8037200DBEB5A /* Network-Utility-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 57D3BC4E1AC8037200DBEB5A /* Network-Utility-icon.png */; };
 		57D3BC551AC8736600DBEB5A /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D3BC541AC8736600DBEB5A /* SettingsVC.m */; };
-		57D3BC581AC8754900DBEB5A /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D3BC571AC8754900DBEB5A /* Settings.m */; };
 		57F541441AADAB3E005622CB /* MainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F541431AADAB3E005622CB /* MainTableView.m */; };
 		57F5417B1AAE00A7005622CB /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5417A1AAE00A7005622CB /* CustomCell.m */; };
 		A5852D3461C217C02151464B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9507101284463A61B0D4C225 /* libPods.a */; };
@@ -64,6 +64,8 @@
 		57948F051ABF32E10065D13D /* OnlineList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineList.h; sourceTree = "<group>"; };
 		57948F061ABF32E10065D13D /* OnlineList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineList.m; sourceTree = "<group>"; };
 		57A9D8641A9E606F0007BC18 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		57C4D8A51ACAC48400F92001 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = CoreData/Settings.h; sourceTree = "<group>"; };
+		57C4D8A61ACAC48400F92001 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = CoreData/Settings.m; sourceTree = "<group>"; };
 		57CC69D71A5BE1C400C427B1 /* Network Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Network Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CC69DB1A5BE1C400C427B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CC69DC1A5BE1C400C427B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,8 +88,6 @@
 		57D3BC4E1AC8037200DBEB5A /* Network-Utility-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Network-Utility-icon.png"; path = "icons/Network-Utility-icon.png"; sourceTree = "<group>"; };
 		57D3BC531AC8736600DBEB5A /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		57D3BC541AC8736600DBEB5A /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
-		57D3BC561AC8754900DBEB5A /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = CoreData/Settings.h; sourceTree = "<group>"; };
-		57D3BC571AC8754900DBEB5A /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = CoreData/Settings.m; sourceTree = "<group>"; };
 		57F541421AADAB3E005622CB /* MainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableView.h; sourceTree = "<group>"; };
 		57F541431AADAB3E005622CB /* MainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableView.m; sourceTree = "<group>"; };
 		57F541791AAE00A7005622CB /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 			children = (
 				5785B5E51AC8B45200FB0DA3 /* Group.h */,
 				5785B5E61AC8B45200FB0DA3 /* Group.m */,
-				57D3BC561AC8754900DBEB5A /* Settings.h */,
-				57D3BC571AC8754900DBEB5A /* Settings.m */,
+				57C4D8A51ACAC48400F92001 /* Settings.h */,
+				57C4D8A61ACAC48400F92001 /* Settings.m */,
 				57948F051ABF32E10065D13D /* OnlineList.h */,
 				57948F061ABF32E10065D13D /* OnlineList.m */,
 				57407F7F1AB4BD6F004DE25A /* HostList.h */,
@@ -389,12 +389,12 @@
 			files = (
 				5785B5E71AC8B45200FB0DA3 /* Group.m in Sources */,
 				57948F071ABF32E10065D13D /* OnlineList.m in Sources */,
+				57C4D8A71ACAC48400F92001 /* Settings.m in Sources */,
 				57F541441AADAB3E005622CB /* MainTableView.m in Sources */,
 				57CC69E31A5BE1C400C427B1 /* ViewController.m in Sources */,
 				57407F811AB4BD6F004DE25A /* HostList.m in Sources */,
 				57CC69E61A5BE1C400C427B1 /* Network_Monitor.xcdatamodeld in Sources */,
 				5785B5E11AC8937F00FB0DA3 /* LogHandler.m in Sources */,
-				57D3BC581AC8754900DBEB5A /* Settings.m in Sources */,
 				57CC69E01A5BE1C400C427B1 /* main.m in Sources */,
 				57CC6A0C1A5BE6DE00C427B1 /* HostObject.m in Sources */,
 				570507351A951C7100CB4E18 /* AddGroupViewController.m in Sources */,
