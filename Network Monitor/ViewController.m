@@ -126,12 +126,16 @@ NSMutableArray *logs;
                       [aboutHost setObject:group.name forKey:@"GroupName"];
                       [aboutHost setObject:group.groupID forKey:@"GroupID"];
                       [aboutHost setObject:group.scriptPath forKeyedSubscript:@"Path"];
+                      if (group.scriptPath) {
+                          [aboutHost setObject:group.scriptPath forKey:@"Script"];
+                      }
                   }
               }
               else {
                   //Если нет группы, то просто напишем, что без группы.
                   [aboutHost setObject:@"Без группы" forKey:@"GroupName"];
                   [aboutHost setObject:@"0" forKey:@"GroupID"];
+                  
               }
               
               //Теперь просто добавим этот словарик с информацией о хосте в массив.
@@ -155,7 +159,7 @@ NSMutableArray *logs;
                                          @"Address": [hostInfo objectForKey:@"Address"],
                                          @"Group" : [hostInfo objectForKey:@"GroupName"],
                                          @"Port" :  [hostInfo objectForKey:@"Port"],
-//                                         @"Path": [hostInfo objectForKey:@"Path"],
+                                         @"Script" : [hostInfo objectForKey:@"Script"],
                                          @"Status": @"Online"
                                          };
                   [hosts addObject:dict];
@@ -171,7 +175,7 @@ NSMutableArray *logs;
                                          @"Address": [hostInfo objectForKey:@"Address"],
                                          @"Group" : [hostInfo objectForKey:@"GroupName"],
                                          @"Port" :  [hostInfo objectForKey:@"Port"],
-//                                         @"Path": [hostInfo objectForKey:@"Path"],
+                                         @"Script" : [hostInfo objectForKey:@"Script"],
                                          @"Status": @"Offline"
                                          };
                   [hosts addObject:dict];
@@ -229,6 +233,7 @@ NSMutableArray *logs;
     for (Group *group in groups){
         NSString *nameGroup = group.name;
         NSInteger groupCounter = [group.hostList count];
+        NSString *sctiptPath = group.scriptPath;
         
         NSMutableArray *online = [NSMutableArray new];
         NSMutableArray *offline = [NSMutableArray new];
@@ -251,11 +256,17 @@ NSMutableArray *logs;
                 
                //Чтобы не выводилось сообщение, если группа нулевая.
                 Settings *settings = [[self settingsFromCoreData]lastObject];
+                
+                //Запуск скрипта
+                
+                if ([group objectForKey:@"Script"]) {
+                    [self startScript:group];
+                }
+                
                 if ([group objectForKey:@"Group"] && [settings.warning isEqualToNumber:@1]) {
                     NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
                     
-                    //Тут надо реализовать запуск скрипта.
-                    
+                    //Показ уведомления
                     NSAlert *alert = [[NSAlert alloc] init];
                     [alert addButtonWithTitle:@"OK"];
                     [alert setMessageText:message];
@@ -270,6 +281,11 @@ NSMutableArray *logs;
         }
     }
     
+
+-(void)startScript:(NSDictionary*)group{
+    NSString *script = [group objectForKey:@"Script"];
+    system([script UTF8String]);
+}
 
 
 #pragma mark -TableView DataSource and Delegate-

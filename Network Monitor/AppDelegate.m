@@ -136,6 +136,8 @@
             }
         }
     }
+    NSError *error = nil;
+    [context save:&error];
 }
 
 #pragma mark - Core Data Saving and Undo support
