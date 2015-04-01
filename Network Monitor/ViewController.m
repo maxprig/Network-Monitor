@@ -250,8 +250,8 @@ NSMutableArray *logs;
                 NSDictionary *group = [offline lastObject];
                 
                //Чтобы не выводилось сообщение, если группа нулевая.
-                Settings *settings = [self settingsFromCoreData];
-                if ([group objectForKey:@"Group"] || [settings.warning isEqualToNumber:@1]) {
+                Settings *settings = [[self settingsFromCoreData]lastObject];
+                if ([group objectForKey:@"Group"] && [settings.warning isEqualToNumber:@1]) {
                     NSString *message = [NSString stringWithFormat:@"Нет соединения с группой '%@'.", [group objectForKey:@"Group"]];
                     
                     //Тут надо реализовать запуск скрипта.

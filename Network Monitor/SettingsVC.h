@@ -12,7 +12,7 @@
 @property (weak) IBOutlet NSButton *controllInternet;
 @property (weak) IBOutlet NSButton *writingLog;
 @property (weak) IBOutlet NSTextField *logPath;
-@property (strong) IBOutlet NSButton *warning;
+@property (weak) IBOutlet NSButton *warning;
 
 - (IBAction)controllCheckBox:(NSButton *)sender;
 - (IBAction)writingLogCheckBox:(NSButton *)sender;

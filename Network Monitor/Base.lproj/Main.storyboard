@@ -137,19 +137,22 @@
                                     <action selector="saveButton:" target="chG-dQ-NTe" id="F9E-Te-Sr2"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAC-M3-qIa">
-                                <rect key="frame" x="18" y="98" width="193" height="18"/>
-                                <buttonCell key="cell" type="check" title="Уведомлять о проблемах?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7ec-vc-yd8">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fed-vZ-NmS">
+                                <rect key="frame" x="18" y="98" width="414" height="18"/>
+                                <buttonCell key="cell" type="check" title="Уведомлять о проблемах?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="T5N-g5-9Je">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="writingLogCheckBox:" target="chG-dQ-NTe" id="01W-Ky-Mhd"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="controllInternet" destination="906-Rw-YBL" id="jB1-IK-lBJ"/>
                         <outlet property="logPath" destination="Bp2-Ae-Gvn" id="hnE-Dk-Dvj"/>
-                        <outlet property="warning" destination="X0W-4M-8eg" id="An4-FF-VCh"/>
+                        <outlet property="warning" destination="fed-vZ-NmS" id="3aT-Im-SoM"/>
                         <outlet property="writingLog" destination="OM4-e1-kh7" id="Rpx-8z-7tA"/>
                         <outlet property="writingLogCheckBox" destination="X0W-4M-8eg" id="a1Q-XR-Qxh"/>
                     </connections>
